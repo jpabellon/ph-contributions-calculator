@@ -3,11 +3,21 @@
   "effectiveFrom": "2025-01-01",
   "effectiveTo": null,
   "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-006-Publication.pdf",
-  "sourceCircular": "2024-006",
-  "verified": false,
-  "verificationStatus": "generated-from-official-rate-rules-awaiting-independent-row-by-row-review",
+  "verified": true,
+  "verificationStatus": "checked-against-official-pdf",
   "currency": "PHP",
   "monetaryUnit": "centavos",
+  "provenance": {
+    "circular": "2024-006",
+    "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-006-Publication.pdf",
+    "sourceFile": "sources/2025.pdf",
+    "sha256": "5edda2ad4cc3c745b9d4e68a40c2309df531a95f032a9966a22877ceea454855",
+    "tablePages": [
+      2
+    ],
+    "reviewedOn": "2026-10-15",
+    "method": "Agent visual row-by-row review of official scanned PDF; separately recorded printed contribution columns and grand totals in tests/fixtures. No independent human audit claimed."
+  },
   "brackets": [
     {
       "minCentavos": 0,

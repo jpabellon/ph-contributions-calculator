@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { getContribution, validateSchedule } from '../dist/index.js';
 
 const schedule = JSON.parse(readFileSync(new URL('../data/employed/2025.json', import.meta.url), 'utf8'));
-const lookup = (salary) => getContribution({monthlyCompensationCentavos: salary * 100, applicableMonth:'2025-06', schedules:[schedule]});
+const lookup = (salary) => getContribution({monthlyCompensationCentavos: Math.round(salary * 100), applicableMonth:'2025-06', schedules:[schedule]});
 test('2025 schedule has 61 contiguous brackets and passes validation', () => {
   assert.equal(schedule.brackets.length,61);
   assert.doesNotThrow(()=>validateSchedule(schedule));
