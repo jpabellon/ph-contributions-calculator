@@ -19,7 +19,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand-link" href="https://bettergov.ph" target="_blank" rel="noopener noreferrer" aria-label="BetterGov.ph — design reference"><img class="brand-logo" src="assets/bettergov-horizontal-primary.webp" width="1280" height="320" alt="BetterGov.ph"></a>
-      <nav class="header-nav" aria-label="Main navigation"><a href="#calculator" aria-current="page">Calculator</a><a href="#guide">How it works</a></nav>
+      <nav class="header-nav" aria-label="Main navigation"><a href="#calculator" aria-current="page">Calculator</a><a href="#guide">How it works</a><a href="#terms">Terms</a></nav>
       <span class="offline-badge"><span aria-hidden="true"></span> Works offline</span>
     </div>
   </header>
@@ -73,6 +73,29 @@
       </section>
     </div>
     <section class="guide-grid" id="guide" aria-label="Understanding your result"><article><span class="guide-index">01 / SALARY CREDIT</span><h3>A bracket, not your take-home pay.</h3><p>Monthly salary credit (MSC) is the contribution base assigned by the SSS schedule. Regular SS is capped at ₱20,000 MSC; any excess goes to the mandatory provident fund.</p></article><article><span class="guide-index">02 / WHO PAYS</span><h3>The right shares for your membership.</h3><p>Business and household employees share contributions with their employer. Self-employed members pay EC themselves. Voluntary members and land-based OFWs have no EC.</p></article><article><span class="guide-index">03 / YOUR PRIVACY</span><h3>Your numbers stay with you.</h3><p>Calculations run in your browser using the bundled library and tables. No accounts, analytics, or external services. Only source and repository links need internet access.</p></article></section>
+    <section class="terms-card" id="terms" aria-labelledby="terms-heading">
+      <h2 id="terms-heading">Definition of terms</h2>
+      <p>Understand the inputs and where your contribution goes. Salary credits are calculation bases; contribution amounts are what gets paid.</p>
+      <dl class="terms-list">
+        <div><dt>SSS / SS</dt><dd>SSS means Social Security System. SS means Social Security, the regular benefit program administered by SSS.</dd></div>
+        <div><dt>Monthly salary credit (MSC)</dt><dd>The contribution base selected from the official schedule, not your take-home pay or the amount you pay to SSS. It may differ from actual income.</dd></div>
+        <div><dt>Compensation / income</dt><dd>The earnings amount entered for the selected period. The calculator uses its monthly equivalent to find the matching contribution bracket; it does not decide which earnings legally count as compensation.</dd></div>
+        <div><dt>Contribution bracket</dt><dd>An income range in the official table with a corresponding salary credit and contribution amount.</dd></div>
+        <div><dt>Regular SS</dt><dd>The contribution component for regular SSS benefits, such as retirement, disability and sickness, subject to the applicable qualifying rules.</dd></div>
+        <div><dt>WISP / MPF</dt><dd>WISP means Workers’ Investment and Savings Program; MPF means Mandatory Provident Fund. These labels identify the mandatory provident-fund component in the bundled schedules, credited to the member’s individual account. It is included in the total, not an optional extra or the separate voluntary savings program.</dd></div>
+        <div><dt>EC — Employees’ Compensation</dt><dd>A separate contribution for work-related sickness, injury or death coverage. Employers pay it for business, sea-based OFW and household employees; self-employed members pay it themselves. The bundled voluntary, non-working-spouse and land-based OFW schedules have no EC contribution.</dd></div>
+        <div><dt>Salary-credit breakdown</dt><dd>Total salary credit is split between Regular SS and MPF. In the bundled 2023 and 2025 schedules, Regular SS uses up to ₱20,000 MSC; the excess is assigned to MPF. These are calculation bases, not additional payments.</dd></div>
+        <div><dt>Employee / employer / member share</dt><dd>Employee is the worker’s portion; employer is the employer’s portion. Member is the full amount paid by an individually paying member. Household employers pay the entire contribution when actual monthly compensation is below ₱5,000.</dd></div>
+        <div><dt>Total contribution</dt><dd>The combined contribution across all applicable components and payers. When Member and Total show the same amount, they describe one payment, not two separate charges.</dd></div>
+        <div><dt>Applicable month</dt><dd>The month the contribution is for. It selects the effective schedule; it is not necessarily the payment date or deadline.</dd></div>
+        <div><dt>Approved MSC</dt><dd>An eligible salary credit already established under SSS rules. Selecting an MSC here does not approve membership or a change in salary credit.</dd></div>
+        <div><dt>Pay frequency / annualized estimate</dt><dd>Pay frequency describes how often income is received. Semi-monthly means twice a month; biweekly means every two weeks. The sample converts these amounts to monthly equivalents; weekly and biweekly averages can differ from actual earnings in a particular month.</dd></div>
+        <div><dt>OFW / kasambahay</dt><dd>OFW means Overseas Filipino Worker. Land-based and sea-based OFWs use different schedule groups. Kasambahay means a household employee.</dd></div>
+        <div><dt>PHP / centavos</dt><dd>PHP (₱) means Philippine pesos. One peso equals 100 centavos. Library and downloaded JSON monetary fields use whole-number centavos, so 528000 means ₱5,280.00.</dd></div>
+      </dl>
+      <details><summary>Worked example: ₱5,280 monthly contribution</summary><p>For a self-employed member at ₱35,000 MSC under the 2025 schedule: ₱20,000 Regular SS base × 15% = ₱3,000; ₱15,000 MPF base × 15% = ₱2,250; plus ₱30 EC = ₱5,280 per month. The member pays the full ₱5,280 once.</p></details>
+      <p class="terms-sources">Sources: <a href="https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-008-Publication.pdf" target="_blank" rel="noopener noreferrer">2025 SSS self-employed schedule</a> and <a href="https://www.sss.gov.ph/employees-compensation-program/" target="_blank" rel="noopener noreferrer">Employees’ Compensation Program</a>. Definitions describe the bundled schedules; benefit eligibility requires the applicable SSS rules.</p>
+    </section>
     <aside class="scope-note"><strong>A reference calculation, with a clear scope.</strong> Includes the 2023 and 2025 official table groups. Eligibility, MSC-change limits, payment deadlines, advance-payment posting, penalties and optional voluntary Pension Booster savings require separate handling. A zero-income input still matches the minimum table bracket; it does not establish an obligation to contribute.</aside>
   </main>
   <footer class="site-footer"><div class="wrap footer-inner">

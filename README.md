@@ -34,12 +34,15 @@ The local website runs with plain HTML, CSS, and JavaScript. It does not need No
 
 The data includes all five official SSS table groups for **2023 and 2025**: 10 schedules and 572 rows. The 2023 schedules apply to January 2023 through December 2024; the 2025 schedules start in January 2025. Earlier periods are unsupported. Later months use the bundled open-ended 2025 schedules; check for newer SSS issuances before production use.
 
-A few terms you will see:
+## Definition of terms
 
-- **Monthly salary credit (MSC):** the contribution base assigned by the SSS table. It may differ from actual income.
-- **Regular SS:** the regular Social Security contribution component.
-- **EC:** Employees' Compensation. Its payer and applicability depend on membership type.
-- **WISP / MPF:** the mandatory provident-fund component for salary credit above the regular SS ceiling. The data uses MPF field names for both years.
+- **SSS / SS:** SSS means Social Security System. SS means Social Security, the regular benefit program administered by SSS.
+- **Monthly salary credit (MSC):** The contribution base selected from the official schedule, not your take-home pay or the amount you pay to SSS. It may differ from actual income.
+- **Regular SS:** The contribution component for regular SSS benefits, such as retirement, disability and sickness, subject to the applicable qualifying rules.
+- **WISP / MPF:** WISP means Workers’ Investment and Savings Program; MPF means Mandatory Provident Fund. These labels identify the mandatory provident-fund component in the bundled schedules, credited to the member’s individual account. It is included in the total, not an optional extra or the separate voluntary savings program.
+- **Total contribution:** The combined contribution across all applicable components and payers. When Member and Total show the same amount, they describe one payment, not two separate charges.
+
+See the [complete definition of terms](docs/definition-of-terms.md) for EC, payer shares, brackets, contribution months, pay frequencies and library amounts, with a worked example. The [web calculator glossary](https://jpabellon.github.io/ph-contributions-calculator/#terms) explains these alongside the calculator.
 
 **Project status:** pre-release and not published to npm. An agent checked the data against the named official PDF snapshots. This is not an independent human audit or SSS certification. Independent payroll review remains outstanding.
 

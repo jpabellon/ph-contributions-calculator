@@ -30,6 +30,12 @@ Changing any input clears the prior result so it cannot be mistaken for a curren
 
 The initial example uses PHP26,000 actual monthly compensation for a business employee and the browser's current month. For the 2025 schedule, the expected contribution is PHP3,930: employee PHP1,300, employer PHP2,630. Entering PHP4,999.99 for a household employee makes the employer pay PHP760; at PHP5,000 the employee pays PHP250 and the employer PHP510.
 
+## Definition of terms
+
+The website includes an offline glossary under **Definition of terms**, covering MSC, Regular SS, WISP/MPF, EC, payer shares, brackets and input parameters. It also explains why Member and Total can show the same payment and includes the ₱5,280 self-employed worked example.
+
+Read the [full glossary](../../docs/definition-of-terms.md) or [open it in the hosted calculator](https://jpabellon.github.io/ph-contributions-calculator/#terms). Library and JSON amounts are integer centavos: 528000 means ₱5,280.00.
+
 ## How it uses the library
 
 - vendor/sss-contributions.js is a generated browser bundle of src/core.ts, src/members.ts and src/index.ts. It exposes SSSContributions and includes the actual library calculation and validation functions.

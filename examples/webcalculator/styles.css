@@ -166,3 +166,12 @@ tfoot th, tfoot td { font-weight: 700; border-bottom: 0; background: var(--color
 @media (forced-colors: active) {
   .input-card, .total-card, .breakdown-card, .offline-badge { border: 1px solid CanvasText; }
 }
+
+.terms-card { margin-block: var(--spacing-kapwa-xl); padding: var(--spacing-kapwa-lg); border: 1px solid var(--color-kapwa-border-weak); border-radius: 8px; scroll-margin-top: 24px; }
+.terms-card h2 { margin-top: 0; }
+.terms-list { margin: 0; }
+.terms-list > div { padding-block: var(--spacing-kapwa-md); border-bottom: 1px solid var(--color-kapwa-border-weak); }
+.terms-list dt { font-weight: 700; }
+.terms-list dd { margin: var(--spacing-kapwa-xs) 0 0; color: var(--color-kapwa-text-support); }
+.terms-card summary { padding-block: var(--spacing-kapwa-md); font-weight: 700; }
+.terms-sources { font-size: 14px; }
