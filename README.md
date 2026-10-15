@@ -58,4 +58,4 @@ Lookup support does not approve membership, MSC changes or payment posting. Non-
 
 ## Web calculator sample
 
-Open [samples/webcalculator/index.html](samples/webcalculator/index.html) directly in a current browser for a fully offline HTML/JavaScript calculator covering every supported member category. No server or build step is needed. See the [sample README](samples/webcalculator/README.md) for parameters, scope and how to refresh the bundled library/data with npm run build:web-sample.
+Open [examples/webcalculator/index.html](examples/webcalculator/index.html) directly in a current browser for a fully offline HTML/JavaScript calculator covering every supported member category. No server or build step is needed. See the [sample README](examples/webcalculator/README.md) for parameters, scope and how to refresh the bundled library/data with npm run build:web-sample.

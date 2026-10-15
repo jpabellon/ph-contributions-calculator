@@ -18,7 +18,7 @@ const library = '/* Generated from the repository TypeScript library. MIT licens
 const catalog = JSON.parse(read('data/contributions/index.json'));
 const schedules = catalog.schedules.map(entry => JSON.parse(read('data/contributions/' + entry.path)));
 const data = '/* Generated from data/contributions. Regenerate: npm run build:web-sample. */\nglobalThis.SSSCalculatorData = ' + JSON.stringify({ catalog, schedules }) + ';\n';
-const outputs = [['samples/webcalculator/vendor/sss-contributions.js', library], ['samples/webcalculator/vendor/schedules.js', data], ['samples/webcalculator/LICENSE', read('LICENSE')]];
+const outputs = [['examples/webcalculator/vendor/sss-contributions.js', library], ['examples/webcalculator/vendor/schedules.js', data], ['examples/webcalculator/LICENSE', read('LICENSE')]];
 const check = process.argv.includes('--check');
 for (const [path, content] of outputs) {
   if (check) { if (read(path) !== content) throw new Error(path + ' is stale; run npm run build:web-sample'); }

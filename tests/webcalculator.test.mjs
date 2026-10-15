@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import vm from 'node:vm';
 import { getMemberContribution } from '../dist/index.js';
-const base = new URL('../samples/webcalculator/', import.meta.url);
+const base = new URL('../examples/webcalculator/', import.meta.url);
 const context = vm.createContext({ URL });
 for (const file of ['vendor/sss-contributions.js','vendor/schedules.js','calculator.js']) vm.runInContext(readFileSync(new URL(file,base),'utf8'),context,{filename:file});
 const calc=context.SSSCalculator;
