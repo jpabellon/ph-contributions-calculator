@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="light">
   <meta name="description" content="An offline SSS contribution calculator for employees, household workers, self-employed members, OFWs, voluntary members and non-working spouses.">
   <title>SSS Contribution Calculator</title>
+  <link rel="stylesheet" href="assets/kapwa-tokens.css">
   <link rel="stylesheet" href="styles.css">
   <script defer src="vendor/sss-contributions.js"></script>
   <script defer src="vendor/schedules.js"></script>
@@ -14,16 +15,21 @@
 </head>
 <body>
   <a class="skip-link" href="#calculator">Skip to calculator</a>
-  <header class="site-header wrap">
-    <a class="wordmark" href="index.html" aria-label="Contribution calculator home"><span class="brand-mark" aria-hidden="true">₱</span><span>contribution<span class="wordmark-light"> / SSS</span></span></a>
-    <span class="offline-badge"><span aria-hidden="true"></span> Works offline</span>
+  <div class="civic-banner"><div class="wrap"><span class="civic-label">Civic tech reference</span><span>An independent calculator. Not an official SSS service.</span></div></div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand-link" href="https://bettergov.ph" target="_blank" rel="noopener noreferrer" aria-label="BetterGov.ph — design reference"><img class="brand-logo" src="assets/bettergov-horizontal-primary.webp" width="1280" height="320" alt="BetterGov.ph"></a>
+      <nav class="header-nav" aria-label="Main navigation"><a href="#calculator" aria-current="page">Calculator</a><a href="#guide">How it works</a></nav>
+      <span class="offline-badge"><span aria-hidden="true"></span> Works offline</span>
+    </div>
   </header>
   <main class="wrap">
     <section class="intro" aria-labelledby="title">
-      <p class="eyebrow">PHILIPPINE SOCIAL SECURITY SYSTEM</p>
-      <h1 id="title">Know your contribution.<br><span>Plan your month.</span></h1>
-      <p class="intro-copy">Find your monthly SSS contribution and see exactly how it’s shared. Choose your membership type to get started.</p>
+      <p class="eyebrow">SOCIAL SECURITY · PHILIPPINES</p>
+      <h1 id="title">SSS Contribution Calculator</h1>
+      <p class="intro-copy">Calculate your monthly SSS contribution, see who pays each share, and check the official source behind your result.</p>
     </section>
+    <p class="service-note"><span class="service-note-label">About this tool</span> All seven membership types. Official 2023 and 2025 schedules. Your information stays in your browser.</p>
     <div class="calculator-grid" id="calculator">
       <section class="input-card" aria-labelledby="form-title">
         <div class="card-heading"><span class="step-number">01</span><div><p class="eyebrow">YOUR DETAILS</p><h2 id="form-title">Set up your calculation</h2></div></div>
@@ -66,10 +72,13 @@
         <p class="action-status" id="action-status" role="status"></p>
       </section>
     </div>
-    <section class="guide-grid" aria-label="Understanding your result"><article><span class="guide-index">01 / SALARY CREDIT</span><h3>A bracket, not your take-home pay.</h3><p>Monthly salary credit (MSC) is the contribution base assigned by the SSS schedule. Regular SS is capped at ₱20,000 MSC; any excess goes to the mandatory provident fund.</p></article><article><span class="guide-index">02 / WHO PAYS</span><h3>The right shares for your membership.</h3><p>Business and household employees share contributions with their employer. Self-employed members pay EC themselves. Voluntary members and land-based OFWs have no EC.</p></article><article><span class="guide-index">03 / YOUR PRIVACY</span><h3>Your numbers stay with you.</h3><p>Calculations run in your browser using the bundled library and tables. No accounts, analytics, or external services. Only source and repository links need internet access.</p></article></section>
+    <section class="guide-grid" id="guide" aria-label="Understanding your result"><article><span class="guide-index">01 / SALARY CREDIT</span><h3>A bracket, not your take-home pay.</h3><p>Monthly salary credit (MSC) is the contribution base assigned by the SSS schedule. Regular SS is capped at ₱20,000 MSC; any excess goes to the mandatory provident fund.</p></article><article><span class="guide-index">02 / WHO PAYS</span><h3>The right shares for your membership.</h3><p>Business and household employees share contributions with their employer. Self-employed members pay EC themselves. Voluntary members and land-based OFWs have no EC.</p></article><article><span class="guide-index">03 / YOUR PRIVACY</span><h3>Your numbers stay with you.</h3><p>Calculations run in your browser using the bundled library and tables. No accounts, analytics, or external services. Only source and repository links need internet access.</p></article></section>
     <aside class="scope-note"><strong>A reference calculation, with a clear scope.</strong> Includes the 2023 and 2025 official table groups. Eligibility, MSC-change limits, payment deadlines, advance-payment posting, penalties and optional voluntary Pension Booster savings require separate handling. A zero-income input still matches the minimum table bracket; it does not establish an obligation to contribute.</aside>
   </main>
-  <footer class="site-footer wrap"><p>Built with <a href="https://github.com/jpabellon/ph-contributions-calculator" target="_blank" rel="noopener noreferrer">ph-sss-contributions</a></p><p>Independent reference implementation · Not affiliated with SSS</p></footer>
+  <footer class="site-footer"><div class="wrap footer-inner">
+    <div class="footer-brand"><a href="https://bettergov.ph" target="_blank" rel="noopener noreferrer" aria-label="Visit BetterGov.ph"><img class="brand-logo" src="assets/bettergov-horizontal-white.webp" width="1280" height="320" alt="BetterGov.ph"></a></div>
+
+  </div></footer>
   <noscript><p class="noscript">Please enable JavaScript to use this calculator. No internet connection is required.</p></noscript>
 </body>
 </html>

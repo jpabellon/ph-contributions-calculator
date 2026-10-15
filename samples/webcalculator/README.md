@@ -51,3 +51,11 @@ Automated sample checks compare every category/bracket against the library and e
 This is a contribution-table calculator, not a complete payroll, registration or payment system. Membership eligibility, age/history-based MSC-change approval, actual earnings classification, foreign-currency conversion, payment deadlines, advance/retroactive-payment posting, penalties, refunds and optional voluntary Pension Booster savings need separate handling. Zero income still matches the minimum table bracket and does not establish an obligation to contribute.
 
 Official schedule provenance and the limitations of agent verification are retained in the bundled data. Independent human review remains outstanding. Not affiliated with or endorsed by SSS. MIT licensed.
+
+## Kapwa design adaptation
+
+The native HTML/CSS interface follows the Kapwa Design System foundations: blue brand and semantic tokens, Inter typography, 8px cards / 6px controls, spacing scale, primary/outline/link actions, bordered tables, visible keyboard focus and responsive layouts. See THIRD-PARTY-NOTICES.md for exact upstream sources and versions.
+
+The source token file is adapted to plain CSS by changing its Tailwind-specific theme wrapper to a root selector. React and Tailwind are not required at runtime. Component colors reference the semantic tokens; input borders and small links use stronger tokens for contrast. The Inter variable font is self-hosted for offline operation.
+
+The BetterGov horizontal primary and white WebP assets are used unchanged at their original 4:1 aspect ratio. The logo guide normally requests CDN URLs; this offline sample includes exact local copies downloaded from that CDN so it works without internet. No logo colors, proportions or effects were changed. Branding is explicitly identified as a design reference, not endorsement or an official SSS service.

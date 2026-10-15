@@ -1,0 +1,27 @@
+{
+  "retrievedOn": "2026-10-15",
+  "kapwaCommit": "e95ac0de95e4d29943d136a296682c42bfc88a15",
+  "logoRepositoryCommit": "cd223d72a7339719b8d376b57bbb60c69bba6505",
+  "assets": [
+    {
+      "path": "assets/bettergov-horizontal-primary.webp",
+      "sourceUrl": "https://assets.bettergov.ph/logos/webp/horizontal-primary.webp",
+      "sha256": "06b8d63e84d04071f470cfad9ea9f0763cd7d67be19084ac5f3f254527838c35"
+    },
+    {
+      "path": "assets/bettergov-horizontal-white.webp",
+      "sourceUrl": "https://assets.bettergov.ph/logos/webp/horizontal-white.webp",
+      "sha256": "8aa97ea8d887f99e9fd96c29523f8c3fb127540ccdc39a07670b116b2266041e"
+    },
+    {
+      "path": "assets/fonts/InterVariable.woff2",
+      "sourceUrl": "https://raw.githubusercontent.com/rsms/inter/master/docs/font-files/InterVariable.woff2",
+      "sha256": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3"
+    },
+    {
+      "path": "assets/fonts/OFL.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/rsms/inter/master/LICENSE.txt",
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+    }
+  ]
+}
