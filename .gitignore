@@ -4,3 +4,6 @@ dist/
 
 output/playwright/
 .playwright-cli/
+.DS_Store
+data/.DS_Store
+data/contributions/.DS_Store
