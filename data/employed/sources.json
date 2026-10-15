@@ -1,0 +1,24 @@
+{
+  "status": "source-discovered-transcription-pending",
+  "schedules": [
+    {
+      "year": 2023,
+      "effectiveFrom": "2023-01-01",
+      "effectiveTo": "2025-01-01",
+      "circular": "2022-033",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2023/02/CI2022-033.pdf",
+      "memberCategory": "business-employer-employee",
+      "verified": false
+    },
+    {
+      "year": 2025,
+      "effectiveFrom": "2025-01-01",
+      "effectiveTo": null,
+      "circular": "2024-006",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-006-Publication.pdf",
+      "memberCategory": "business-employer-employee",
+      "verified": false
+    }
+  ],
+  "notes": "Do not substitute OFW, household, voluntary or self-employed schedules for business employees. Each bracket and component must be independently checked before verified=true."
+}
