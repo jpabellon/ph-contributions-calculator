@@ -55,3 +55,7 @@ const result = getMemberContribution({
 For voluntary and non-working spouse members, use `basis: 'salary-credit'` and `monthlySalaryCreditCentavos` with an approved exact MSC. Business/household employees and sea-based OFWs require compensation basis; household payer shares cannot be determined from MSC alone. Self-employed and land-based OFW lookups support either basis. An invalid selected MSC is rejected rather than rounded or capped.
 
 Lookup support does not approve membership, MSC changes or payment posting. Non-working spouse basis derivation is intentionally left to the caller because source wording differs; see the coverage notes. Run `npm run example` for executable cases covering every category.
+
+## Web calculator sample
+
+Open [samples/webcalculator/index.html](samples/webcalculator/index.html) directly in a current browser for a fully offline HTML/JavaScript calculator covering every supported member category. No server or build step is needed. See the [sample README](samples/webcalculator/README.md) for parameters, scope and how to refresh the bundled library/data with npm run build:web-sample.
