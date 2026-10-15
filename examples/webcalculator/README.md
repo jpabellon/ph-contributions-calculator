@@ -2,6 +2,10 @@
 
 A plain HTML, CSS and JavaScript reference implementation of the repository's SSS library. All seven member categories and all ten 2023/2025 schedules are included.
 
+## Hosted calculator
+
+Open https://jpabellon.github.io/ph-contributions-calculator/ to use the GitHub Pages version. The Pages workflow tests the library and browser bundle, then publishes this folder as the site root. Relevant pushes to main redeploy it; it can also be run manually from GitHub Actions.
+
 ## Run locally
 
 Open **index.html** in a current Chrome, Edge, Firefox or Safari browser. No installation, build, server, account or internet connection is required. Keep this folder's files together when copying or downloading it.
