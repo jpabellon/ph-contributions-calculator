@@ -18,11 +18,11 @@ Schema version 2 adds explicit `memberCategories`, `memberSSCentavos`, `memberMP
 
 Compensation intervals use inclusive `minCentavos`, exclusive `maxExclusiveCentavos`, and `null` for an unlimited upper bound. The first printed “below” row starts at zero in the nonnegative-input API. These bounds do not establish eligibility or an exemption for a month without earnings.
 
-Use `getMemberContribution()` for these files. The original `getContribution()` and `data/employed` remain available for existing business-employee integrations; the old API explicitly rejects version 2 data so it cannot omit individually paid contributions from its total. Do not merge both catalogs into one lookup.
+Use `getMemberContribution()` with an explicit membership category and this catalog for all contribution lookups.
 
 ## Verification record
 
-An agent visually reviewed every row of the official scanned category circulars on 2026-10-15, including continuation pages in 2023, against the recorded regular SS, EC, WISP/MPF and total columns. `sources/` retains exact official PDFs, and each schedule and catalog entry identifies its URL, SHA-256 hash and table page numbers. The employed rows reuse the previously reviewed employed dataset; tests enforce exact component compatibility. User-supplied images served as references, with official PDFs retained as the authoritative snapshots.
+An agent visually reviewed every row of the official scanned category circulars on 2026-10-15, including continuation pages in 2023, against the recorded regular SS, EC, WISP/MPF and total columns. `sources/` retains exact official PDFs, and each schedule and catalog entry identifies its URL, SHA-256 hash and table page numbers. All employed-member rows are retained in this catalog alongside the other membership categories. User-supplied images served as references, with official PDFs retained as the authoritative snapshots.
 
 `transcriptions/*.csv` retains static centavo representations of every row and the printed grand-total column, separately from the lookup JSON. Bounds and MSC follow the printed row progression; household compensation splitting is explicit. Tests compare all JSON fields with those records, independently check rates and EC, check every adjacent compensation centavo, test exact selected MSCs, reconcile all payer totals, verify source hashes, and check category/date isolation.
 

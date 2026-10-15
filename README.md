@@ -162,12 +162,6 @@ A zero-income input still selects the minimum table bracket; it does not establi
 
 Read the [data coverage and verification notes](data/contributions/README.md) and [payroll behavior guide](docs/payroll-behavior.md), and obtain independent human review before production adoption.
 
-### Existing integrations
-
-The older getContribution() API remains available with the legacy [data/employed/](data/employed/) schedules. Use getMemberContribution() with the newer category-aware catalog for new integrations.
-
-Do not pass the version 2 category data to getContribution(). Do not load both legacy 2025.json and its 2025-01.json compatibility copy; their effective periods overlap.
-
 ## License
 
 [MIT](LICENSE). The web example also includes third-party design assets with their own [notices and licenses](examples/webcalculator/THIRD-PARTY-NOTICES.md).
