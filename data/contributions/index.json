@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 2,
+  "coverage": "Five official SSS contribution table groups for 2023 and 2025; seven explicit membership categories, with shared tables for voluntary/NWS and employed/sea-based OFW.",
+  "schedules": [
+    {
+      "id": "sss-employed-2023",
+      "path": "employed/2023.json",
+      "memberCategories": [
+        "employed",
+        "sea-based-ofw"
+      ],
+      "effectiveFrom": "2023-01-01",
+      "effectiveTo": "2025-01-01",
+      "bracketCount": 53,
+      "verified": true,
+      "circular": "2022-033",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2023/02/CI2022-033.pdf",
+      "sourceFile": "sources/2022-033.pdf",
+      "sha256": "c55c6b4b5e1377db673fceb5c28ab873fa893fe3a07483a0109770343b15e7f2",
+      "tablePages": [
+        1,
+        2
+      ],
+      "reviewedOn": "2026-10-15",
+      "method": "Agent visual review of every row of the official scanned category PDF against recorded contribution columns; no independent human audit claimed."
+    },
+    {
+      "id": "sss-household-2023",
+      "path": "household/2023.json",
+      "memberCategories": [
+        "household"
+      ],
+      "effectiveFrom": "2023-01-01",
+      "effectiveTo": "2025-01-01",
+      "bracketCount": 60,
+      "verified": true,
+      "circular": "2022-037",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2023/02/CI2022-037.pdf",
+      "sourceFile": "sources/2022-037.pdf",
+      "sha256": "baaecc84ab4dae649698d534b0efa06dbe6d63746baacc33ef3bce19bb51163c",
+      "tablePages": [
+        1,
+        2
+      ],
+      "reviewedOn": "2026-10-15",
+      "method": "Agent visual review of every row of the official scanned category PDF against recorded contribution columns; no independent human audit claimed."
+    },
+    {
+      "id": "sss-self-employed-2023",
+      "path": "self-employed/2023.json",
+      "memberCategories": [
+        "self-employed"
+      ],
+      "effectiveFrom": "2023-01-01",
+      "effectiveTo": "2025-01-01",
+      "bracketCount": 53,
+      "verified": true,
+      "circular": "2022-034",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2023/02/CI2022-034.pdf",
+      "sourceFile": "sources/2022-034.pdf",
+      "sha256": "6ff310d3d7d5df190429903c58ef0a6f83d6bd388785021bb17897399c76704f",
+      "tablePages": [
+        1,
+        2
+      ],
+      "reviewedOn": "2026-10-15",
+      "method": "Agent visual review of every row of the official scanned category PDF against recorded contribution columns; no independent human audit claimed."
+    },
+    {
+      "id": "sss-voluntary-nws-2023",
+      "path": "voluntary-nws/2023.json",
+      "memberCategories": [
+        "voluntary",
+        "non-working-spouse"
+      ],
+      "effectiveFrom": "2023-01-01",
+      "effectiveTo": "2025-01-01",
+      "bracketCount": 53,
+      "verified": true,
+      "circular": "2022-035",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2023/02/CI2022-035.pdf",
+      "sourceFile": "sources/2022-035.pdf",
+      "sha256": "46884fec6e93a3c0a07fc9d897888b3f4a7e70eec3148e26d32f179ca7cdef58",
+      "tablePages": [
+        1,
+        2
+      ],
+      "reviewedOn": "2026-10-15",
+      "method": "Agent visual review of every row of the official scanned category PDF against recorded contribution columns; no independent human audit claimed."
+    },
+    {
+      "id": "sss-land-based-ofw-2023",
+      "path": "land-based-ofw/2023.json",
+      "memberCategories": [
+        "land-based-ofw"
+      ],
+      "effectiveFrom": "2023-01-01",
+      "effectiveTo": "2025-01-01",
+      "bracketCount": 45,
+      "verified": true,
+      "circular": "2022-036",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2023/02/CI2022-036.pdf",
+      "sourceFile": "sources/2022-036.pdf",
+      "sha256": "43e0746aa3fc8b9a1f8ce73967876b728d8f5a0f983ab5a180ffdd3b2a103c18",
+      "tablePages": [
+        1,
+        2
+      ],
+      "reviewedOn": "2026-10-15",
+      "method": "Agent visual review of every row of the official scanned category PDF against recorded contribution columns; no independent human audit claimed."
+    },
+    {
+      "id": "sss-employed-2025",
+      "path": "employed/2025.json",
+      "memberCategories": [
+        "employed",
+        "sea-based-ofw"
+      ],
+      "effectiveFrom": "2025-01-01",
+      "effectiveTo": null,
+      "bracketCount": 61,
+      "verified": true,
+      "circular": "2024-006",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-006-Publication.pdf",
+      "sourceFile": "sources/2024-006.pdf",
+      "sha256": "5edda2ad4cc3c745b9d4e68a40c2309df531a95f032a9966a22877ceea454855",
+      "tablePages": [
+        2
+      ],
+      "reviewedOn": "2026-10-15",
+      "method": "Agent visual review of every row of the official scanned category PDF against recorded contribution columns; no independent human audit claimed."
+    },
+    {
+      "id": "sss-household-2025",
+      "path": "household/2025.json",
+      "memberCategories": [
+        "household"
+      ],
+      "effectiveFrom": "2025-01-01",
+      "effectiveTo": null,
+      "bracketCount": 70,
+      "verified": true,
+      "circular": "2024-007",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-007-Publication.pdf",
+      "sourceFile": "sources/2024-007.pdf",
+      "sha256": "eaccfdb1d774bf8f2503a98941c2c13c563d934887af22ee115a1373f4d2626f",
+      "tablePages": [
+        2
+      ],
+      "reviewedOn": "2026-10-15",
+      "method": "Agent visual review of every row of the official scanned category PDF against recorded contribution columns; no independent human audit claimed."
+    },
+    {
+      "id": "sss-self-employed-2025",
+      "path": "self-employed/2025.json",
+      "memberCategories": [
+        "self-employed"
+      ],
+      "effectiveFrom": "2025-01-01",
+      "effectiveTo": null,
+      "bracketCount": 61,
+      "verified": true,
+      "circular": "2024-008",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-008-Publication.pdf",
+      "sourceFile": "sources/2024-008.pdf",
+      "sha256": "bdbddf20a7a69a8971d5f9ab1af212239161fa5b95253759490c3644527f1132",
+      "tablePages": [
+        2
+      ],
+      "reviewedOn": "2026-10-15",
+      "method": "Agent visual review of every row of the official scanned category PDF against recorded contribution columns; no independent human audit claimed."
+    },
+    {
+      "id": "sss-voluntary-nws-2025",
+      "path": "voluntary-nws/2025.json",
+      "memberCategories": [
+        "voluntary",
+        "non-working-spouse"
+      ],
+      "effectiveFrom": "2025-01-01",
+      "effectiveTo": null,
+      "bracketCount": 61,
+      "verified": true,
+      "circular": "2024-009",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-009-Publication.pdf",
+      "sourceFile": "sources/2024-009.pdf",
+      "sha256": "8fb378554d141d83c9b993cd9d4fe63962f9aa2af1c019aeb308b98fe72e0ac4",
+      "tablePages": [
+        2
+      ],
+      "reviewedOn": "2026-10-15",
+      "method": "Agent visual review of every row of the official scanned category PDF against recorded contribution columns; no independent human audit claimed."
+    },
+    {
+      "id": "sss-land-based-ofw-2025",
+      "path": "land-based-ofw/2025.json",
+      "memberCategories": [
+        "land-based-ofw"
+      ],
+      "effectiveFrom": "2025-01-01",
+      "effectiveTo": null,
+      "bracketCount": 55,
+      "verified": true,
+      "circular": "2024-010",
+      "sourceUrl": "https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-010-Publication.pdf",
+      "sourceFile": "sources/2024-010.pdf",
+      "sha256": "ce69d2622722a04120517409de2eab3059d9765bee3fb8446e8d1f0d4c51645b",
+      "tablePages": [
+        2
+      ],
+      "reviewedOn": "2026-10-15",
+      "method": "Agent visual review of every row of the official scanned category PDF against recorded contribution columns; no independent human audit claimed."
+    }
+  ]
+}

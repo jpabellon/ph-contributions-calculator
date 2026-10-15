@@ -1,14 +1,18 @@
 # Philippine SSS Contributions Calculator
 
-Open-source TypeScript scaffold for Philippine SSS employed-member contribution lookups, payroll compensation normalization, and deduction allocation.
+TypeScript library for Philippine SSS contribution lookups across business employees, household employees, self-employed members, land-based and sea-based OFWs, voluntary members and non-working spouses, with payroll compensation normalization and deduction allocation.
 
-**Status: pre-release.** Complete business-employer/employee schedules for 2023 (53 brackets) and 2025 (61 brackets) have been checked row by row against official SSS PDFs. See [data and verification provenance](data/employed/README.md). This data milestone is complete; payroll arithmetic and runtime validation have automated coverage, while independent production payroll review remains outstanding, and the package remains private/unpublished.
+**Status: pre-release.** All five official SSS table groups for 2023 and 2025 are included: 10 complete schedules, 572 rows, and seven explicit membership categories. Data was checked against official PDF snapshots; independent human payroll review remains outstanding. The package is private/unpublished.
 
-The API requires caller-supplied schedules. Load `data/employed/2023.json` and `data/employed/2025.json` for historical lookups. Do not also load the compatibility copy `2025-01.json`, which would create overlapping effective periods.
+Use [`data/contributions/index.json`](data/contributions/index.json) to load the category-aware catalog and pass those schedules to `getMemberContribution()`. See [coverage, source provenance and special-case rules](data/contributions/README.md). There is no category fallback.
+
+Existing `getContribution()` callers can continue using `data/employed/2023.json` and `data/employed/2025.json`. The compatibility copy `2025-01.json` must not be loaded alongside `2025.json`. Version 2 category data is rejected by the original API to prevent omission of member-paid components.
 
 ## Functions
 
 - `normalizeCompensation()`: monthly, semi-monthly, biweekly, weekly, daily annualized estimates or actual earnings.
+- `getMemberContribution()`: explicit category lookup by compensation or approved exact MSC, with employer, employee and individual-member totals.
+- `validateMemberSchedule()`: validate the category-aware schema and payer components.
 - `getContribution()`: lookup by applicable month and salary using a caller-supplied verified schedule.
 - `allocateContribution()`: equal, single-pay-period, proportional, and reconciliation allocation.
 
@@ -31,3 +35,23 @@ See [payroll behavior, rounding, compatibility changes and worked example](docs/
 - Configure release automation and publish an npm package only after verification.
 
 MIT licensed. Not affiliated with or endorsed by the Philippine Social Security System.
+
+## Category-aware lookup
+
+```js
+import { getMemberContribution } from 'ph-sss-contributions';
+
+// Load the files listed by data/contributions/index.json as `schedules`.
+const result = getMemberContribution({
+  memberCategory: 'self-employed',
+  basis: 'compensation',
+  monthlyCompensationCentavos: 2600000,
+  applicableMonth: '2025-06',
+  schedules,
+});
+// memberCentavos: 393000; employeeCentavos: 0; employerCentavos: 0
+```
+
+For voluntary and non-working spouse members, use `basis: 'salary-credit'` and `monthlySalaryCreditCentavos` with an approved exact MSC. Business/household employees and sea-based OFWs require compensation basis; household payer shares cannot be determined from MSC alone. Self-employed and land-based OFW lookups support either basis. An invalid selected MSC is rejected rather than rounded or capped.
+
+Lookup support does not approve membership, MSC changes or payment posting. Non-working spouse basis derivation is intentionally left to the caller because source wording differs; see the coverage notes. Run `npm run example` for executable cases covering every category.

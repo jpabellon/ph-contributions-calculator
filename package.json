@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && node --test tests/*.test.mjs",
-    "example": "npm run build && node examples/monthly-payroll.mjs"
+    "example": "npm run build && node examples/monthly-payroll.mjs && node examples/member-categories.mjs"
   },
   "devDependencies": {
     "typescript": "^5.6.0"
@@ -15,6 +15,7 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./data/*": "./data/*"
   }
 }

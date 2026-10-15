@@ -38,3 +38,7 @@ Run `npm run example` after installing dependencies. Actual June 2025 earnings o
 Malformed JavaScript/JSON inputs previously accepted may now throw: unknown modes/strategies/frequencies, empty actual earnings, missing proportional weights, invalid dates, non-HTTPS sources, incomplete brackets and unsafe totals. A malformed or unverified schedule in the supplied list is rejected even if outside the requested month. Existing valid TypeScript call shapes remain supported.
 
 Before production adoption: obtain independent human payroll/data review, decide employer-specific earnings and refund policies, and review applicable later SSS issuances. Package publication and release automation remain future work.
+
+## Other membership categories
+
+The legacy payroll lookup remains available. Use the [category-aware data and API](../data/contributions/README.md) for household and individually paying members. Employer/employee allocation is distinct from member-paid liability; never treat `memberCentavos` as an employee deduction. Exact approved MSC selection is supported for voluntary/NWS, self-employed and land-based OFW members, with no automatic eligibility or posting decision.

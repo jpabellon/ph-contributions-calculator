@@ -15,3 +15,5 @@ On 2026-10-15 an agent visually reviewed every printed row against official SSS 
 `tests/fixtures/*.csv` records the printed regular SS, EC, WISP/MPF and grand-total columns in centavos, separately from the schedule JSON. Bounds and MSC follow the printed 500-peso row progression; employer and employee totals reconcile their printed components. Exhaustive tests compare all rows, all adjacent centavo boundaries, interiors, caps, statutory integer rates, PDF hashes, and effective-date selection. Fixtures are retained for review; no PDF parsing or network access is needed to run tests.
 
 Scope: business employers and employees only. Do not substitute these schedules for household, self-employed, voluntary, or OFW categories. A null end date is not confirmation that the schedule remains current indefinitely.
+
+For all other categories and explicit member-paid components, use the [category-aware catalog](../contributions/README.md) and `getMemberContribution()`. These legacy files remain business-employee schedules.
