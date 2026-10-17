@@ -66,6 +66,8 @@ curl -g "https://api.nocodebackend.com/read/contribution_rates?Instance=37012_ph
 
 Pass the income date and monthly salary, and the API returns the applicable law's row, including `member_pays: "3930.00"`. Reverse lookups take a contribution amount and return the salary credit. See the [API reference](docs/api.md) and the [use cases](docs/api-use-cases.md) (payroll, household, individual members, income estimates, remittance checks). The data is generated from `data/contributions` by the SDK and reconciled by tests; see [api/README.md](api/README.md) for reloading it.
 
+[samples/webapicalculator](samples/webapicalculator/README.md) is a browser calculator built on the API. It has the same design as the offline sample, both lookup modes, and shows the API request and response behind every result.
+
 ## Web calculator sample
 
 Open [samples/webcalculator/index.html](samples/webcalculator/index.html) directly in a current browser for a fully offline HTML/JavaScript calculator covering every supported member category. No server or build step is needed. See the [sample README](samples/webcalculator/README.md) for parameters, scope and how to refresh the bundled library/data with npm run build:web-sample.

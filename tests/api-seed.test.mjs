@@ -2,36 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { getMemberContribution } from '../dist/index.js';
+import { ncbRead, centavos, TABLES } from './ncb-emulator.mjs';
 const read = p => readFileSync(new URL(p, import.meta.url), 'utf8');
 const seed = name => JSON.parse(read(`../api/seed/${name}.json`));
 const catalog = JSON.parse(read('../data/contributions/index.json'));
 const schedules = catalog.schedules.map(e => JSON.parse(read(`../data/contributions/${e.path}`)));
-const [funds, memberTypes, laws, rates, ambiguous] = ['funds', 'member_types', 'laws', 'contribution_rates', 'ambiguous_amounts'].map(seed);
-const TABLES = { funds, member_types: memberTypes, laws, contribution_rates: rates };
-const centavos = s => { const [p, c = ''] = String(s).split('.'); return Number(p) * 100 + Number(c.padEnd(2, '0')); };
+const { funds, member_types: memberTypes, laws, contribution_rates: rates } = TABLES;
+const ambiguous = seed('ambiguous_amounts');
 const MONEY = /^\d+\.\d{2}$/;
-
-// Mirrors NCB's documented read filters: col=, col[gt|gte|lt|lte|ne|in]=, sort, order, limit. Booleans are served as 0/1.
-function ncbRead(table, query) {
-  const params = new URLSearchParams(query);
-  const value = (row, col) => typeof row[col] === 'boolean' ? (row[col] ? 1 : 0) : row[col];
-  const compare = (a, b) => typeof a === 'number' ? a - Number(b) : MONEY.test(a) ? centavos(a) - centavos(b) : a < b ? -1 : a > b ? 1 : 0;
-  let rows = [...TABLES[table]];
-  for (const [key, expected] of params) {
-    if (['Instance', 'sort', 'order', 'limit', 'page'].includes(key)) continue;
-    const [, col, op = 'eq'] = key.match(/^(\w+)(?:\[(\w+)\])?$/);
-    assert.ok(rows.length === 0 || col in TABLES[table][0], `unknown column ${col}`);
-    rows = rows.filter(r => {
-      const c = compare(value(r, col), expected);
-      return { eq: c === 0, ne: c !== 0, gt: c > 0, gte: c >= 0, lt: c < 0, lte: c <= 0, in: expected.split(',').some(v => compare(value(r, col), v) === 0) }[op];
-    });
-  }
-  if (params.has('sort')) {
-    const col = params.get('sort'), dir = params.get('order') === 'desc' ? -1 : 1;
-    rows.sort((a, b) => dir * compare(value(a, col), value(b, col)));
-  }
-  return rows.slice(0, Number(params.get('limit') ?? 10));
-}
 const lookup = (memberType, date, extra) => ncbRead('contribution_rates',
   `fund=sss&member_type=${memberType}&valid_from[lte]=${date}&valid_until[gte]=${date}&${extra}&limit=100`);
 

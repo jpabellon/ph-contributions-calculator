@@ -7,3 +7,4 @@ output/playwright/
 .DS_Store
 data/.DS_Store
 data/contributions/.DS_Store
+.gstack/
