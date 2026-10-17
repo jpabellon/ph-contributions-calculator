@@ -8,3 +8,4 @@ output/playwright/
 data/.DS_Store
 data/contributions/.DS_Store
 .gstack/
+.vexp/
