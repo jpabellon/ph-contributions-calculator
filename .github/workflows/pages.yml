@@ -1,10 +1,11 @@
-name: Deploy web calculator to GitHub Pages
+name: Deploy web calculators to GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
       - 'examples/webcalculator/**'
+      - 'examples/webapicalculator/**'
       - 'src/**'
       - 'data/**'
       - 'scripts/build-web-sample.mjs'
@@ -34,12 +35,21 @@ jobs:
       - run: npm ci
       - name: Build and test the library and checked-in browser bundle
         run: npm test
+      - name: Assemble site
+        # Offline calculator at the root, API example at /webapicalculator/.
+        # /webcalculator/ redirects to the root so the API example's relative
+        # link to ../webcalculator/ works both on Pages and in a local checkout.
+        run: |
+          mkdir -p _site/webcalculator
+          cp -R examples/webcalculator/. _site/
+          cp -R examples/webapicalculator _site/webapicalculator
+          printf '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=../"><link rel="canonical" href="../"><a href="../">Open the SSS Contribution Calculator</a>\n' > _site/webcalculator/index.html
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload calculator site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: examples/webcalculator
+          path: _site
 
   deploy:
     needs: build

@@ -7,6 +7,10 @@ A plain HTML, CSS and JavaScript sample that uses the free [public SSS contribut
 
 Every result has an **API request & response** panel showing the exact URL the page called, a link to open it, and the raw JSON. Copy that URL to use the API from any other app; no key is needed.
 
+## Try it online
+
+**[Open the live API example →](https://jpabellon.github.io/ph-contributions-calculator/webapicalculator/)**
+
 ## Run locally
 
 Open **index.html** in a current Chrome, Edge, Firefox or Safari browser. An internet connection is required. If your browser blocks requests from a file opened directly, serve the folder instead and open http://localhost:8000:
