@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import vm from 'node:vm';
 import { fakeFetch, TABLES } from './ncb-emulator.mjs';
-const sample = new URL('../samples/webapicalculator/', import.meta.url);
+const sample = new URL('../examples/webapicalculator/', import.meta.url);
 const read = (path, base = sample) => readFileSync(new URL(path, base));
 const requests = [];
 let fetchImpl = fakeFetch;
@@ -110,7 +110,7 @@ test('the sample has no rate formulas and only calls the public API', () => {
 });
 
 test('assets, license and notices match the offline sample', () => {
-  const offline = new URL('../samples/webcalculator/', import.meta.url);
+  const offline = new URL('../examples/webcalculator/', import.meta.url);
   const walk = (base, dir = '') => readdirSync(new URL(dir, base)).flatMap(name => statSync(new URL(dir + name, base)).isDirectory() ? walk(base, dir + name + '/') : [dir + name]);
   const files = walk(new URL('assets/', sample));
   assert.deepEqual(files.sort(), walk(new URL('assets/', offline)).sort());

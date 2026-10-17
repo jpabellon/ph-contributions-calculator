@@ -17,7 +17,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand-link" href="https://bettergov.ph" target="_blank" rel="noopener noreferrer" aria-label="BetterGov.ph — design reference"><img class="brand-logo" src="assets/bettergov-horizontal-primary.webp" width="1280" height="320" alt="BetterGov.ph"></a>
-      <nav class="header-nav" aria-label="Main navigation"><a href="#calculator" aria-current="page">Calculator</a><a href="#guide">How it works</a><a href="https://github.com/jpabellon/ph-contributions-calculator/blob/main/docs/api.md" target="_blank" rel="noopener noreferrer">API docs</a></nav>
+      <nav class="header-nav" aria-label="Main navigation"><a href="#calculator" aria-current="page">Calculator</a><a href="#guide">How it works</a><a href="#terms">Terms</a><a href="https://github.com/jpabellon/ph-contributions-calculator/blob/main/docs/api.md" target="_blank" rel="noopener noreferrer">API docs</a></nav>
       <span class="offline-badge api-badge"><span aria-hidden="true"></span> Live API</span>
     </div>
   </header>
@@ -101,6 +101,29 @@
       </section>
     </div>
     <section class="guide-grid" id="guide" aria-label="How this sample works"><article><span class="guide-index">01 / LOOKUP</span><h3>Salary in, contribution out.</h3><p>The page sends the membership type, the month and the salary (or chosen MSC). The API returns the row of the SSS table that applied that month, with each payer's share.</p></article><article><span class="guide-index">02 / REVERSE LOOKUP</span><h3>Amount in, salary credit out.</h3><p>Enter a payslip deduction, employer share, total or member payment. The API returns the salary credit and salary range that produce it. A few household amounts match more than one row, and the page shows them all.</p></article><article><span class="guide-index">03 / YOUR DATA</span><h3>Sent to the API, not stored here.</h3><p>Lookups need internet. The amounts you enter are sent to the public API at api.nocodebackend.com. This page keeps no accounts, cookies or analytics. For fully offline use, try the offline calculator.</p></article></section>
+    <section class="terms-card" id="terms" aria-labelledby="terms-heading">
+      <h2 id="terms-heading">Definition of terms</h2>
+      <p>Understand the inputs and where your contribution goes. Salary credits are calculation bases; contribution amounts are what gets paid.</p>
+      <dl class="terms-list">
+        <div><dt>SSS / SS</dt><dd>SSS means Social Security System. SS means Social Security, the regular benefit program administered by SSS.</dd></div>
+        <div><dt>Monthly salary credit (MSC)</dt><dd>The contribution base selected from the official schedule, not your take-home pay or the amount you pay to SSS. It may differ from actual income.</dd></div>
+        <div><dt>Compensation / income</dt><dd>The actual monthly earnings amount entered. The API uses it to find the matching contribution bracket; it does not decide which earnings legally count as compensation.</dd></div>
+        <div><dt>Contribution bracket</dt><dd>An income range in the official table with a corresponding salary credit and contribution amount.</dd></div>
+        <div><dt>Regular SS</dt><dd>The contribution component for regular SSS benefits, such as retirement, disability and sickness, subject to the applicable qualifying rules.</dd></div>
+        <div><dt>WISP / MPF</dt><dd>WISP means Workers’ Investment and Savings Program; MPF means Mandatory Provident Fund. These labels identify the mandatory provident-fund component in the bundled schedules, credited to the member’s individual account. It is included in the total, not an optional extra or the separate voluntary savings program.</dd></div>
+        <div><dt>EC — Employees’ Compensation</dt><dd>A separate contribution for work-related sickness, injury or death coverage. Employers pay it for business, sea-based OFW and household employees; self-employed members pay it themselves. The bundled voluntary, non-working-spouse and land-based OFW schedules have no EC contribution.</dd></div>
+        <div><dt>Salary-credit breakdown</dt><dd>Total salary credit is split between Regular SS and MPF. In the bundled 2023 and 2025 schedules, Regular SS uses up to ₱20,000 MSC; the excess is assigned to MPF. These are calculation bases, not additional payments.</dd></div>
+        <div><dt>Employee / employer / member share</dt><dd>Employee is the worker’s portion; employer is the employer’s portion. Member is the full amount paid by an individually paying member. Household employers pay the entire contribution when actual monthly compensation is below ₱5,000.</dd></div>
+        <div><dt>Total contribution</dt><dd>The combined contribution across all applicable components and payers. When Member and Total show the same amount, they describe one payment, not two separate charges.</dd></div>
+        <div><dt>Applicable month</dt><dd>The month the contribution is for. The API uses it to pick the law in effect; it is not necessarily the payment date or deadline.</dd></div>
+        <div><dt>Approved MSC</dt><dd>An eligible salary credit already established under SSS rules. Selecting an MSC here does not approve membership or a change in salary credit.</dd></div>
+        <div><dt>Reverse lookup</dt><dd>Working backwards from an amount paid to the salary credit and salary range that produce it. It estimates monthly compensation from one employer for one month; it is not proof of income. A few household amounts match more than one row.</dd></div>
+        <div><dt>OFW / kasambahay</dt><dd>OFW means Overseas Filipino Worker. Land-based and sea-based OFWs use different schedule groups. Kasambahay means a household employee.</dd></div>
+        <div><dt>PHP / pesos</dt><dd>PHP (₱) means Philippine pesos. The API returns amounts as peso text with two decimals, so "5280.00" means ₱5,280.00. Downloaded JSON keeps the API values.</dd></div>
+      </dl>
+      <details><summary>Worked example: ₱5,280 monthly contribution</summary><p>For a self-employed member at ₱35,000 MSC under the 2025 schedule: ₱20,000 Regular SS base × 15% = ₱3,000; ₱15,000 MPF base × 15% = ₱2,250; plus ₱30 EC = ₱5,280 per month. The member pays the full ₱5,280 once.</p></details>
+      <p class="terms-sources">Sources: <a href="https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-008-Publication.pdf" target="_blank" rel="noopener noreferrer">2025 SSS self-employed schedule</a> and <a href="https://www.sss.gov.ph/employees-compensation-program/" target="_blank" rel="noopener noreferrer">Employees’ Compensation Program</a>. Definitions describe the bundled schedules; benefit eligibility requires the applicable SSS rules.</p>
+    </section>
     <aside class="scope-note"><strong>A reference sample, with a clear scope.</strong> Uses the public API's 2023 and 2025 official tables. A reverse lookup estimates monthly compensation from one employer; it is not proof of income. Eligibility, MSC-change limits, payment deadlines, advance-payment posting, penalties and optional voluntary Pension Booster savings require separate handling. Not affiliated with or endorsed by SSS.</aside>
   </main>
   <footer class="site-footer"><div class="wrap footer-inner">

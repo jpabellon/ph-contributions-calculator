@@ -1,4 +1,4 @@
-/* Native HTML adaptation of Kapwa foundations; upstream tokens are in assets/kapwa-tokens.css. */
+/* Native HTML adaptation of Kapwa foundations; upstream tokens are in assets/kapwa-tokens.css. Shared with ../webcalculator; API-sample additions are at the end. */
 @font-face {
   font-family: Inter;
   src: url("assets/fonts/InterVariable.woff2") format("woff2");
@@ -165,4 +165,37 @@ tfoot th, tfoot td { font-weight: 700; border-bottom: 0; background: var(--color
 }
 @media (forced-colors: active) {
   .input-card, .total-card, .breakdown-card, .offline-badge { border: 1px solid CanvasText; }
+}
+
+.terms-card { margin-block: var(--spacing-kapwa-xl); padding: var(--spacing-kapwa-lg); border: 1px solid var(--color-kapwa-border-weak); border-radius: 8px; scroll-margin-top: 24px; }
+.terms-card h2 { margin-top: 0; }
+.terms-list { margin: 0; }
+.terms-list > div { padding-block: var(--spacing-kapwa-md); border-bottom: 1px solid var(--color-kapwa-border-weak); }
+.terms-list dt { font-weight: 700; }
+.terms-list dd { margin: var(--spacing-kapwa-xs) 0 0; color: var(--color-kapwa-text-support); }
+.terms-card summary { padding-block: var(--spacing-kapwa-md); font-weight: 700; }
+.terms-sources { font-size: 14px; }
+
+/* API sample additions. */
+.api-badge { background: var(--color-kapwa-bg-brand-weak); color: var(--color-kapwa-text-brand-bold); }
+.api-badge span { background: var(--color-kapwa-bg-brand-default); }
+.mode-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: var(--spacing-kapwa-lg); border-radius: 8px; background: var(--color-kapwa-bg-surface-raised); border: 1px solid var(--color-kapwa-border-weak); }
+.mode-switch button { min-height: 44px; border: 0; border-radius: 6px; background: transparent; color: var(--color-kapwa-text-support); font-size: 14px; font-weight: 600; padding: 8px 12px; }
+.mode-switch button:hover { color: var(--color-kapwa-text-brand); }
+.mode-switch button[aria-selected=true] { background: var(--color-kapwa-bg-surface); color: var(--color-kapwa-text-brand-bold); box-shadow: var(--shadow-xs); border: 1px solid var(--color-kapwa-border-brand); }
+.mode-help { font-size: 14px; color: var(--color-kapwa-text-support); margin: 0 0 var(--spacing-kapwa-lg); }
+.empty-state .secondary-button { margin-top: var(--spacing-kapwa-sm); }
+#candidates .notice { margin-bottom: var(--spacing-kapwa-lg); }
+#candidates + #breakdown:not([hidden]) { margin-top: var(--spacing-kapwa-xl); }
+.results-column { min-width: 0; }
+.api-panel { margin-top: var(--spacing-kapwa-lg); border: 1px solid var(--color-kapwa-border-weak); border-radius: 8px; background: var(--color-kapwa-bg-surface); padding: 0 var(--spacing-kapwa-lg) var(--spacing-kapwa-sm); box-shadow: var(--shadow-xs); font-size: 14px; }
+.api-panel summary { font-weight: 600; min-height: 48px; padding-block: 12px; }
+.api-url { margin-top: var(--spacing-kapwa-sm); padding: var(--spacing-kapwa-sm) var(--spacing-kapwa-md); border-radius: 6px; background: var(--color-kapwa-bg-surface-raised); border: 1px solid var(--color-kapwa-border-weak); overflow-wrap: anywhere; }
+.api-url code, .api-panel pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; line-height: 1.6; }
+.api-panel .secondary-button { text-decoration: none; }
+.api-panel pre { margin: var(--spacing-kapwa-sm) 0 var(--spacing-kapwa-md); max-height: 320px; overflow: auto; padding: var(--spacing-kapwa-md); border-radius: 6px; background: var(--color-kapwa-brand-950); color: var(--color-kapwa-neutral-50); }
+[aria-busy=true] .primary-button { cursor: wait; }
+@media (max-width: 480px) {
+  .api-panel { padding-inline: var(--spacing-kapwa-md); }
+  .mode-switch button { font-size: 13px; padding-inline: 6px; }
 }

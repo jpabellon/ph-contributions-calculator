@@ -4,7 +4,7 @@ A free, read-only REST API for Philippine SSS monthly contribution tables (2023 
 
 > Not affiliated with or endorsed by the Social Security System. A lookup is not SSS approval of membership, a salary-credit change or a payment. See [Limits](#limits-and-what-the-api-does-not-decide).
 
-For step-by-step payroll and income-estimate examples, see [API use cases](api-use-cases.md). To see it working in a browser, open the [API calculator sample](../samples/webapicalculator/README.md). It does both lookups and shows each request and response.
+For step-by-step payroll and income-estimate examples, see [API use cases](api-use-cases.md). To see it working in a browser, open the [API calculator sample](../examples/webapicalculator/README.md). It does both lookups and shows each request and response.
 
 ## Quick start
 

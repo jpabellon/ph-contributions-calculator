@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { MEMBER_CATEGORIES, validateMemberSchedule, getMemberContribution, getContribution } from '../dist/index.js';
+import { MEMBER_CATEGORIES, validateMemberSchedule, getMemberContribution } from '../dist/index.js';
 const read = p=>readFileSync(new URL(p,import.meta.url));
 const catalog = JSON.parse(read('../data/contributions/index.json'));
 const schedules = catalog.schedules.map(entry=>JSON.parse(read(`../data/contributions/${entry.path}`)));
@@ -100,18 +100,10 @@ test('wrong categories, unverified data, ambiguous schedules and invalid request
  for(const amount of [-1,0.5,NaN,Infinity,Number.MAX_SAFE_INTEGER+1]) assert.throws(()=>query('employed',amount),/INVALID_AMOUNT/);
  assert.throws(()=>getMemberContribution({memberCategory:'employed',applicableMonth:'2025-01',schedules:[...schedules,schedules.find(s=>s.id==='sss-employed-2025')],basis:'compensation',monthlyCompensationCentavos:0}),/UNSUPPORTED_OR_AMBIGUOUS_PERIOD/);
  assert.throws(()=>validateMemberSchedule({...schedules[0],verified:false}),/UNVERIFIED_SCHEDULE/);
- assert.throws(()=>getContribution({monthlyCompensationCentavos:0,applicableMonth:'2025-01',schedules}),/USE_MEMBER_CONTRIBUTION_API/);
  for(const mutate of [s=>s.memberCategories=['unknown'],s=>s.memberCategories=['employed','self-employed'],s=>s.memberCategories=[],s=>s.schemaVersion=1,s=>s.brackets[0].memberSSCentavos=1,s=>delete s.brackets[0].memberECCentavos,s=>s.brackets[0].mpfSalaryCreditCentavos=1]) {
   const s=structuredClone(schedules[0]);mutate(s);assert.throws(()=>validateMemberSchedule(s));
  }
  const r=query('self-employed',500000);r.breakdown.memberSSCentavos=1;assert.equal(query('self-employed',500000).breakdown.memberSSCentavos,75000);
-});
-test('generalized employed tables preserve every legacy employed component',()=>{
- for(const year of [2023,2025]) {
-  const legacy=JSON.parse(read(`../data/employed/${year}.json`));
-  const modern=schedules.find(s=>s.id===`sss-employed-${year}`);
-  for(const [i,row] of legacy.brackets.entries()) for(const key of Object.keys(row)) assert.equal(modern.brackets[i][key],row[key]);
- }
 });
 
 test('catalog data is accessible through package export paths',()=>{

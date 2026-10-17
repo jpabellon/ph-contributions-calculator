@@ -41,4 +41,4 @@ Before production adoption: obtain independent human payroll/data review, decide
 
 ## Other membership categories
 
-The legacy payroll lookup remains available. Use the [category-aware data and API](../data/contributions/README.md) for household and individually paying members. Employer/employee allocation is distinct from member-paid liability; never treat `memberCentavos` as an employee deduction. Exact approved MSC selection is supported for voluntary/NWS, self-employed and land-based OFW members, with no automatic eligibility or posting decision.
+Use the [category-aware data and API](../data/contributions/README.md) for every membership category, including business employees, household members and individually paying members. Employer/employee allocation is distinct from member-paid liability; never treat `memberCentavos` as an employee deduction. Exact approved MSC selection is supported for voluntary/NWS, self-employed and land-based OFW members, with no automatic eligibility or posting decision.
