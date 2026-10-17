@@ -56,6 +56,16 @@ For voluntary and non-working spouse members, use `basis: 'salary-credit'` and `
 
 Lookup support does not approve membership, MSC changes or payment posting. Non-working spouse basis derivation is intentionally left to the caller because source wording differs; see the coverage notes. Run `npm run example` for executable cases covering every category.
 
+## Public REST API
+
+A free, read-only API serves the same verified tables. It needs no registration or key:
+
+```sh
+curl -g "https://api.nocodebackend.com/read/contribution_rates?Instance=37012_ph_contributions&fund=sss&member_type=self-employed&valid_from[lte]=2025-06-15&valid_until[gte]=2025-06-15&salary_min[lte]=26000&salary_max[gte]=26000"
+```
+
+Pass the income date and monthly salary, and the API returns the applicable law's row, including `member_pays: "3930.00"`. Reverse lookups take a contribution amount and return the salary credit. See the [API reference](docs/api.md) and the [use cases](docs/api-use-cases.md) (payroll, household, individual members, income estimates, remittance checks). The data is generated from `data/contributions` by the SDK and reconciled by tests; see [api/README.md](api/README.md) for reloading it.
+
 ## Web calculator sample
 
 Open [samples/webcalculator/index.html](samples/webcalculator/index.html) directly in a current browser for a fully offline HTML/JavaScript calculator covering every supported member category. No server or build step is needed. See the [sample README](samples/webcalculator/README.md) for parameters, scope and how to refresh the bundled library/data with npm run build:web-sample.
