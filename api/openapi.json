@@ -1,0 +1,3598 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API documentation for 37012_ph_contributions",
+    "version": "1.0.0",
+    "description": "API documentation for 37012_ph_contributions"
+  },
+  "servers": [
+    {
+      "url": "https://api.nocodebackend.com"
+    }
+  ],
+  "paths": {
+    "/create/contribution_rates?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Contribution Rates"
+        ],
+        "summary": "Create a new record in contribution_rates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "fund",
+                  "member_type",
+                  "law_code",
+                  "law",
+                  "law_url",
+                  "valid_from",
+                  "valid_until",
+                  "still_in_effect",
+                  "row_order",
+                  "salary_min",
+                  "salary_max",
+                  "no_upper_limit",
+                  "monthly_salary_credit",
+                  "employer_pays",
+                  "employee_pays",
+                  "member_pays",
+                  "total",
+                  "breakdown_json"
+                ],
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "member_type": {
+                    "type": "string"
+                  },
+                  "law_code": {
+                    "type": "string"
+                  },
+                  "law": {
+                    "type": "string"
+                  },
+                  "law_url": {
+                    "type": "string"
+                  },
+                  "valid_from": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "valid_until": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "still_in_effect": {
+                    "type": "integer"
+                  },
+                  "row_order": {
+                    "type": "integer"
+                  },
+                  "salary_min": {
+                    "type": "number"
+                  },
+                  "salary_max": {
+                    "type": "number"
+                  },
+                  "no_upper_limit": {
+                    "type": "integer"
+                  },
+                  "monthly_salary_credit": {
+                    "type": "number"
+                  },
+                  "employer_pays": {
+                    "type": "number"
+                  },
+                  "employee_pays": {
+                    "type": "number"
+                  },
+                  "member_pays": {
+                    "type": "number"
+                  },
+                  "total": {
+                    "type": "number"
+                  },
+                  "breakdown_json": {
+                    "type": "string"
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created the record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Record created successfully"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "ID of the newly created record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/read/contribution_rates?Instance=37012_ph_contributions": {
+      "get": {
+        "tags": [
+          "Contribution Rates"
+        ],
+        "summary": "Retrieve all records from contribution_rates",
+        "description": "### Filtering\n\nYou can filter results by adding column-based query parameters directly to the URL.\nOperators use bracket notation:\n\n| Operator | Example | Meaning |\n|---|---|---|\n| `field=value` | `?status=active` | Equal (default) |\n| `field[ne]=value` | `?status[ne]=inactive` | Not equal |\n| `field[gt]=value` | `?price[gt]=100` | Greater than |\n| `field[gte]=value` | `?date[gte]=2024-05-01` | Greater than or equal |\n| `field[lt]=value` | `?score[lt]=500` | Less than |\n| `field[lte]=value` | `?score[lte]=800` | Less than or equal |\n| `field[in]=value` | `?type[in]=a,b,c` | In list (comma-separated) |\n| `field[like]=value` | `?name[like]=john` | Partial match |\n\n**Available columns:** `fund`, `member_type`, `law_code`, `law`, `law_url`, `valid_from`, `valid_until`, `still_in_effect`, `row_order`, `salary_min`, `salary_max`, `no_upper_limit`, `monthly_salary_credit`, `employer_pays`, `employee_pays`, `member_pays`, `total`, `breakdown_json`, `user_id`\n\n**Example:**\n```\n?Instance={db_name}&status=active&price[gte]=100&price[lte]=500&sort=price&order=desc&page=1&limit=20\n```",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "query",
+            "name": "queryParams",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filters, pagination & sorting as key=value pairs separated by &. Example: status=active&page=2&limit=5&sort=name&order=asc. Available columns: fund, member_type, law_code, law, law_url, valid_from, valid_until, still_in_effect, row_order, salary_min, salary_max, no_upper_limit, monthly_salary_credit, employer_pays, employee_pays, member_pays, total, breakdown_json, user_id"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund": {
+                            "type": "string"
+                          },
+                          "member_type": {
+                            "type": "string"
+                          },
+                          "law_code": {
+                            "type": "string"
+                          },
+                          "law": {
+                            "type": "string"
+                          },
+                          "law_url": {
+                            "type": "string"
+                          },
+                          "valid_from": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "valid_until": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "still_in_effect": {
+                            "type": "integer"
+                          },
+                          "row_order": {
+                            "type": "integer"
+                          },
+                          "salary_min": {
+                            "type": "number"
+                          },
+                          "salary_max": {
+                            "type": "number"
+                          },
+                          "no_upper_limit": {
+                            "type": "integer"
+                          },
+                          "monthly_salary_credit": {
+                            "type": "number"
+                          },
+                          "employer_pays": {
+                            "type": "number"
+                          },
+                          "employee_pays": {
+                            "type": "number"
+                          },
+                          "member_pays": {
+                            "type": "number"
+                          },
+                          "total": {
+                            "type": "number"
+                          },
+                          "breakdown_json": {
+                            "type": "string"
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/read/contribution_rates/{id}?Instance=37012_ph_contributions": {
+      "get": {
+        "tags": [
+          "Contribution Rates"
+        ],
+        "summary": "Retrieve a record by ID from contribution_rates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to retrieve"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "member_type": {
+                          "type": "string"
+                        },
+                        "law_code": {
+                          "type": "string"
+                        },
+                        "law": {
+                          "type": "string"
+                        },
+                        "law_url": {
+                          "type": "string"
+                        },
+                        "valid_from": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "valid_until": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "still_in_effect": {
+                          "type": "integer"
+                        },
+                        "row_order": {
+                          "type": "integer"
+                        },
+                        "salary_min": {
+                          "type": "number"
+                        },
+                        "salary_max": {
+                          "type": "number"
+                        },
+                        "no_upper_limit": {
+                          "type": "integer"
+                        },
+                        "monthly_salary_credit": {
+                          "type": "number"
+                        },
+                        "employer_pays": {
+                          "type": "number"
+                        },
+                        "employee_pays": {
+                          "type": "number"
+                        },
+                        "member_pays": {
+                          "type": "number"
+                        },
+                        "total": {
+                          "type": "number"
+                        },
+                        "breakdown_json": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Record Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/search/contribution_rates?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Contribution Rates"
+        ],
+        "summary": "Search for records in contribution_rates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "member_type": {
+                    "type": "string"
+                  },
+                  "law_code": {
+                    "type": "string"
+                  },
+                  "law": {
+                    "type": "string"
+                  },
+                  "law_url": {
+                    "type": "string"
+                  },
+                  "valid_from": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "valid_until": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "still_in_effect": {
+                    "type": "integer"
+                  },
+                  "row_order": {
+                    "type": "integer"
+                  },
+                  "salary_min": {
+                    "type": "number"
+                  },
+                  "salary_max": {
+                    "type": "number"
+                  },
+                  "no_upper_limit": {
+                    "type": "integer"
+                  },
+                  "monthly_salary_credit": {
+                    "type": "number"
+                  },
+                  "employer_pays": {
+                    "type": "number"
+                  },
+                  "employee_pays": {
+                    "type": "number"
+                  },
+                  "member_pays": {
+                    "type": "number"
+                  },
+                  "total": {
+                    "type": "number"
+                  },
+                  "breakdown_json": {
+                    "type": "string"
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved matching records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund": {
+                            "type": "string"
+                          },
+                          "member_type": {
+                            "type": "string"
+                          },
+                          "law_code": {
+                            "type": "string"
+                          },
+                          "law": {
+                            "type": "string"
+                          },
+                          "law_url": {
+                            "type": "string"
+                          },
+                          "valid_from": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "valid_until": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "still_in_effect": {
+                            "type": "integer"
+                          },
+                          "row_order": {
+                            "type": "integer"
+                          },
+                          "salary_min": {
+                            "type": "number"
+                          },
+                          "salary_max": {
+                            "type": "number"
+                          },
+                          "no_upper_limit": {
+                            "type": "integer"
+                          },
+                          "monthly_salary_credit": {
+                            "type": "number"
+                          },
+                          "employer_pays": {
+                            "type": "number"
+                          },
+                          "employee_pays": {
+                            "type": "number"
+                          },
+                          "member_pays": {
+                            "type": "number"
+                          },
+                          "total": {
+                            "type": "number"
+                          },
+                          "breakdown_json": {
+                            "type": "string"
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/update/contribution_rates/{id}?Instance=37012_ph_contributions": {
+      "put": {
+        "tags": [
+          "Contribution Rates"
+        ],
+        "summary": "Update a record in contribution_rates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "member_type": {
+                    "type": "string"
+                  },
+                  "law_code": {
+                    "type": "string"
+                  },
+                  "law": {
+                    "type": "string"
+                  },
+                  "law_url": {
+                    "type": "string"
+                  },
+                  "valid_from": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "valid_until": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "still_in_effect": {
+                    "type": "integer"
+                  },
+                  "row_order": {
+                    "type": "integer"
+                  },
+                  "salary_min": {
+                    "type": "number"
+                  },
+                  "salary_max": {
+                    "type": "number"
+                  },
+                  "no_upper_limit": {
+                    "type": "integer"
+                  },
+                  "monthly_salary_credit": {
+                    "type": "number"
+                  },
+                  "employer_pays": {
+                    "type": "number"
+                  },
+                  "employee_pays": {
+                    "type": "number"
+                  },
+                  "member_pays": {
+                    "type": "number"
+                  },
+                  "total": {
+                    "type": "number"
+                  },
+                  "breakdown_json": {
+                    "type": "string"
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/delete/contribution_rates/{id}?Instance=37012_ph_contributions": {
+      "delete": {
+        "tags": [
+          "Contribution Rates"
+        ],
+        "summary": "Delete a record from contribution_rates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to delete"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted the record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Record Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/create/contribution_rates?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Contribution Rates"
+        ],
+        "summary": "Bulk create records in contribution_rates (Max 500)",
+        "description": "### Bulk Create Guide\nInsert multiple records into the database with a single API call.\n\n- **Max Limit**: 500 records per request.\n- **Performance**: Highly recommended over looping single POST requests.\n\n**Response**: Returns an HTTP 207 Multi-Status with a summary and a per-record breakdown of successes and failures.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "description": "An array of objects to insert",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "member_type": {
+                          "type": "string"
+                        },
+                        "law_code": {
+                          "type": "string"
+                        },
+                        "law": {
+                          "type": "string"
+                        },
+                        "law_url": {
+                          "type": "string"
+                        },
+                        "valid_from": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "valid_until": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "still_in_effect": {
+                          "type": "integer"
+                        },
+                        "row_order": {
+                          "type": "integer"
+                        },
+                        "salary_min": {
+                          "type": "number"
+                        },
+                        "salary_max": {
+                          "type": "number"
+                        },
+                        "no_upper_limit": {
+                          "type": "integer"
+                        },
+                        "monthly_salary_credit": {
+                          "type": "number"
+                        },
+                        "employer_pays": {
+                          "type": "number"
+                        },
+                        "employee_pays": {
+                          "type": "number"
+                        },
+                        "member_pays": {
+                          "type": "number"
+                        },
+                        "total": {
+                          "type": "number"
+                        },
+                        "breakdown_json": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "records": [
+                  {
+                    "fund": "string",
+                    "member_type": "string",
+                    "law_code": "string",
+                    "law": "string",
+                    "law_url": "string",
+                    "valid_from": "2026-05-30",
+                    "valid_until": "2026-05-30",
+                    "still_in_effect": 0,
+                    "row_order": 0,
+                    "salary_min": 0,
+                    "salary_max": 0,
+                    "no_upper_limit": 0,
+                    "monthly_salary_credit": 0,
+                    "employer_pays": 0,
+                    "employee_pays": 0,
+                    "member_pays": 0,
+                    "total": 0,
+                    "breakdown_json": "string",
+                    "user_id": "string"
+                  },
+                  {
+                    "fund": "string",
+                    "member_type": "string",
+                    "law_code": "string",
+                    "law": "string",
+                    "law_url": "string",
+                    "valid_from": "2026-05-30",
+                    "valid_until": "2026-05-30",
+                    "still_in_effect": 0,
+                    "row_order": 0,
+                    "salary_min": 0,
+                    "salary_max": 0,
+                    "no_upper_limit": 0,
+                    "monthly_salary_credit": 0,
+                    "employer_pays": 0,
+                    "employee_pays": 0,
+                    "member_pays": 0,
+                    "total": 0,
+                    "breakdown_json": "string",
+                    "user_id": "string"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "207": {
+            "description": "Multi-Status response indicating success/failure per record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/update/contribution_rates?Instance=37012_ph_contributions": {
+      "put": {
+        "tags": [
+          "Contribution Rates"
+        ],
+        "summary": "Bulk update records in contribution_rates (Max 500)",
+        "description": "### Bulk Update Guide\nUpdate multiple existing records simultaneously using a single transaction.\n\n- **Requirement**: Every object in the `records` array MUST include the primary key (`id`).\n- **Max Limit**: 500 records per request.\n- **Atomic**: Wraps updates in a transaction (all-or-nothing per database rules).",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "description": "An array of objects to update. Must include the primary key.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "member_type": {
+                          "type": "string"
+                        },
+                        "law_code": {
+                          "type": "string"
+                        },
+                        "law": {
+                          "type": "string"
+                        },
+                        "law_url": {
+                          "type": "string"
+                        },
+                        "valid_from": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "valid_until": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "still_in_effect": {
+                          "type": "integer"
+                        },
+                        "row_order": {
+                          "type": "integer"
+                        },
+                        "salary_min": {
+                          "type": "number"
+                        },
+                        "salary_max": {
+                          "type": "number"
+                        },
+                        "no_upper_limit": {
+                          "type": "integer"
+                        },
+                        "monthly_salary_credit": {
+                          "type": "number"
+                        },
+                        "employer_pays": {
+                          "type": "number"
+                        },
+                        "employee_pays": {
+                          "type": "number"
+                        },
+                        "member_pays": {
+                          "type": "number"
+                        },
+                        "total": {
+                          "type": "number"
+                        },
+                        "breakdown_json": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "records": [
+                  {
+                    "id": 0,
+                    "fund": "string",
+                    "member_type": "string",
+                    "law_code": "string",
+                    "law": "string",
+                    "law_url": "string",
+                    "valid_from": "2026-05-30",
+                    "valid_until": "2026-05-30",
+                    "still_in_effect": 0,
+                    "row_order": 0,
+                    "salary_min": 0,
+                    "salary_max": 0,
+                    "no_upper_limit": 0,
+                    "monthly_salary_credit": 0,
+                    "employer_pays": 0,
+                    "employee_pays": 0,
+                    "member_pays": 0,
+                    "total": 0,
+                    "breakdown_json": "string",
+                    "user_id": "string"
+                  },
+                  {
+                    "id": 0,
+                    "fund": "string",
+                    "member_type": "string",
+                    "law_code": "string",
+                    "law": "string",
+                    "law_url": "string",
+                    "valid_from": "2026-05-30",
+                    "valid_until": "2026-05-30",
+                    "still_in_effect": 0,
+                    "row_order": 0,
+                    "salary_min": 0,
+                    "salary_max": 0,
+                    "no_upper_limit": 0,
+                    "monthly_salary_credit": 0,
+                    "employer_pays": 0,
+                    "employee_pays": 0,
+                    "member_pays": 0,
+                    "total": 0,
+                    "breakdown_json": "string",
+                    "user_id": "string"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "207": {
+            "description": "Multi-Status response indicating success/failure per record"
+          },
+          "400": {
+            "description": "Bad Request (e.g. missing primary key)"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/delete/contribution_rates?Instance=37012_ph_contributions": {
+      "delete": {
+        "tags": [
+          "Contribution Rates"
+        ],
+        "summary": "Bulk delete records from contribution_rates (Max 500)",
+        "description": "### Bulk Delete Guide\nDelete multiple records by providing the IDs of all the records you want to delete.\n\n- **Max Limit**: 500 IDs per request.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "description": "An array of primary keys to delete",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully processed bulk delete"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/create/funds?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Funds"
+        ],
+        "summary": "Create a new record in funds",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "fund",
+                  "name"
+                ],
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "official_site": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "notes": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created the record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Record created successfully"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "ID of the newly created record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/read/funds?Instance=37012_ph_contributions": {
+      "get": {
+        "tags": [
+          "Funds"
+        ],
+        "summary": "Retrieve all records from funds",
+        "description": "### Filtering\n\nYou can filter results by adding column-based query parameters directly to the URL.\nOperators use bracket notation:\n\n| Operator | Example | Meaning |\n|---|---|---|\n| `field=value` | `?status=active` | Equal (default) |\n| `field[ne]=value` | `?status[ne]=inactive` | Not equal |\n| `field[gt]=value` | `?price[gt]=100` | Greater than |\n| `field[gte]=value` | `?date[gte]=2024-05-01` | Greater than or equal |\n| `field[lt]=value` | `?score[lt]=500` | Less than |\n| `field[lte]=value` | `?score[lte]=800` | Less than or equal |\n| `field[in]=value` | `?type[in]=a,b,c` | In list (comma-separated) |\n| `field[like]=value` | `?name[like]=john` | Partial match |\n\n**Available columns:** `fund`, `name`, `official_site`, `notes`, `user_id`\n\n**Example:**\n```\n?Instance={db_name}&status=active&price[gte]=100&price[lte]=500&sort=price&order=desc&page=1&limit=20\n```",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "query",
+            "name": "queryParams",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filters, pagination & sorting as key=value pairs separated by &. Example: status=active&page=2&limit=5&sort=name&order=asc. Available columns: fund, name, official_site, notes, user_id"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "official_site": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "notes": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/read/funds/{id}?Instance=37012_ph_contributions": {
+      "get": {
+        "tags": [
+          "Funds"
+        ],
+        "summary": "Retrieve a record by ID from funds",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to retrieve"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "official_site": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "notes": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Record Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/search/funds?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Funds"
+        ],
+        "summary": "Search for records in funds",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "official_site": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "notes": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved matching records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "official_site": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "notes": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/update/funds/{id}?Instance=37012_ph_contributions": {
+      "put": {
+        "tags": [
+          "Funds"
+        ],
+        "summary": "Update a record in funds",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "official_site": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "notes": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/delete/funds/{id}?Instance=37012_ph_contributions": {
+      "delete": {
+        "tags": [
+          "Funds"
+        ],
+        "summary": "Delete a record from funds",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to delete"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted the record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Record Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/create/funds?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Funds"
+        ],
+        "summary": "Bulk create records in funds (Max 500)",
+        "description": "### Bulk Create Guide\nInsert multiple records into the database with a single API call.\n\n- **Max Limit**: 500 records per request.\n- **Performance**: Highly recommended over looping single POST requests.\n\n**Response**: Returns an HTTP 207 Multi-Status with a summary and a per-record breakdown of successes and failures.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "description": "An array of objects to insert",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "official_site": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "notes": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "records": [
+                  {
+                    "fund": "string",
+                    "name": "string",
+                    "official_site": "string",
+                    "notes": "string",
+                    "user_id": "string"
+                  },
+                  {
+                    "fund": "string",
+                    "name": "string",
+                    "official_site": "string",
+                    "notes": "string",
+                    "user_id": "string"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "207": {
+            "description": "Multi-Status response indicating success/failure per record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/update/funds?Instance=37012_ph_contributions": {
+      "put": {
+        "tags": [
+          "Funds"
+        ],
+        "summary": "Bulk update records in funds (Max 500)",
+        "description": "### Bulk Update Guide\nUpdate multiple existing records simultaneously using a single transaction.\n\n- **Requirement**: Every object in the `records` array MUST include the primary key (`id`).\n- **Max Limit**: 500 records per request.\n- **Atomic**: Wraps updates in a transaction (all-or-nothing per database rules).",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "description": "An array of objects to update. Must include the primary key.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "official_site": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "notes": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "records": [
+                  {
+                    "id": 0,
+                    "fund": "string",
+                    "name": "string",
+                    "official_site": "string",
+                    "notes": "string",
+                    "user_id": "string"
+                  },
+                  {
+                    "id": 0,
+                    "fund": "string",
+                    "name": "string",
+                    "official_site": "string",
+                    "notes": "string",
+                    "user_id": "string"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "207": {
+            "description": "Multi-Status response indicating success/failure per record"
+          },
+          "400": {
+            "description": "Bad Request (e.g. missing primary key)"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/delete/funds?Instance=37012_ph_contributions": {
+      "delete": {
+        "tags": [
+          "Funds"
+        ],
+        "summary": "Bulk delete records from funds (Max 500)",
+        "description": "### Bulk Delete Guide\nDelete multiple records by providing the IDs of all the records you want to delete.\n\n- **Max Limit**: 500 IDs per request.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "description": "An array of primary keys to delete",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully processed bulk delete"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/create/laws?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Laws"
+        ],
+        "summary": "Create a new record in laws",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "fund",
+                  "law_code",
+                  "law",
+                  "law_url",
+                  "member_types",
+                  "calculation_method",
+                  "valid_from",
+                  "valid_until",
+                  "still_in_effect",
+                  "bracket_count"
+                ],
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "law_code": {
+                    "type": "string"
+                  },
+                  "law": {
+                    "type": "string"
+                  },
+                  "law_url": {
+                    "type": "string"
+                  },
+                  "member_types": {
+                    "type": "string"
+                  },
+                  "calculation_method": {
+                    "type": "string"
+                  },
+                  "valid_from": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "valid_until": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "still_in_effect": {
+                    "type": "integer"
+                  },
+                  "bracket_count": {
+                    "type": "integer"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "table_pages": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "reviewed_on": {
+                    "type": "string",
+                    "format": "date",
+                    "nullable": true
+                  },
+                  "verification_method": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "rules_json": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "advance_payment_transition_json": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created the record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Record created successfully"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "ID of the newly created record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/read/laws?Instance=37012_ph_contributions": {
+      "get": {
+        "tags": [
+          "Laws"
+        ],
+        "summary": "Retrieve all records from laws",
+        "description": "### Filtering\n\nYou can filter results by adding column-based query parameters directly to the URL.\nOperators use bracket notation:\n\n| Operator | Example | Meaning |\n|---|---|---|\n| `field=value` | `?status=active` | Equal (default) |\n| `field[ne]=value` | `?status[ne]=inactive` | Not equal |\n| `field[gt]=value` | `?price[gt]=100` | Greater than |\n| `field[gte]=value` | `?date[gte]=2024-05-01` | Greater than or equal |\n| `field[lt]=value` | `?score[lt]=500` | Less than |\n| `field[lte]=value` | `?score[lte]=800` | Less than or equal |\n| `field[in]=value` | `?type[in]=a,b,c` | In list (comma-separated) |\n| `field[like]=value` | `?name[like]=john` | Partial match |\n\n**Available columns:** `fund`, `law_code`, `law`, `law_url`, `member_types`, `calculation_method`, `valid_from`, `valid_until`, `still_in_effect`, `bracket_count`, `sha256`, `table_pages`, `reviewed_on`, `verification_method`, `rules_json`, `advance_payment_transition_json`, `user_id`\n\n**Example:**\n```\n?Instance={db_name}&status=active&price[gte]=100&price[lte]=500&sort=price&order=desc&page=1&limit=20\n```",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "query",
+            "name": "queryParams",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filters, pagination & sorting as key=value pairs separated by &. Example: status=active&page=2&limit=5&sort=name&order=asc. Available columns: fund, law_code, law, law_url, member_types, calculation_method, valid_from, valid_until, still_in_effect, bracket_count, sha256, table_pages, reviewed_on, verification_method, rules_json, advance_payment_transition_json, user_id"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund": {
+                            "type": "string"
+                          },
+                          "law_code": {
+                            "type": "string"
+                          },
+                          "law": {
+                            "type": "string"
+                          },
+                          "law_url": {
+                            "type": "string"
+                          },
+                          "member_types": {
+                            "type": "string"
+                          },
+                          "calculation_method": {
+                            "type": "string"
+                          },
+                          "valid_from": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "valid_until": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "still_in_effect": {
+                            "type": "integer"
+                          },
+                          "bracket_count": {
+                            "type": "integer"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "table_pages": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "reviewed_on": {
+                            "type": "string",
+                            "format": "date",
+                            "nullable": true
+                          },
+                          "verification_method": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "rules_json": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "advance_payment_transition_json": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/read/laws/{id}?Instance=37012_ph_contributions": {
+      "get": {
+        "tags": [
+          "Laws"
+        ],
+        "summary": "Retrieve a record by ID from laws",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to retrieve"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "law_code": {
+                          "type": "string"
+                        },
+                        "law": {
+                          "type": "string"
+                        },
+                        "law_url": {
+                          "type": "string"
+                        },
+                        "member_types": {
+                          "type": "string"
+                        },
+                        "calculation_method": {
+                          "type": "string"
+                        },
+                        "valid_from": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "valid_until": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "still_in_effect": {
+                          "type": "integer"
+                        },
+                        "bracket_count": {
+                          "type": "integer"
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "table_pages": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reviewed_on": {
+                          "type": "string",
+                          "format": "date",
+                          "nullable": true
+                        },
+                        "verification_method": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "rules_json": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "advance_payment_transition_json": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Record Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/search/laws?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Laws"
+        ],
+        "summary": "Search for records in laws",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "law_code": {
+                    "type": "string"
+                  },
+                  "law": {
+                    "type": "string"
+                  },
+                  "law_url": {
+                    "type": "string"
+                  },
+                  "member_types": {
+                    "type": "string"
+                  },
+                  "calculation_method": {
+                    "type": "string"
+                  },
+                  "valid_from": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "valid_until": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "still_in_effect": {
+                    "type": "integer"
+                  },
+                  "bracket_count": {
+                    "type": "integer"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "table_pages": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "reviewed_on": {
+                    "type": "string",
+                    "format": "date",
+                    "nullable": true
+                  },
+                  "verification_method": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "rules_json": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "advance_payment_transition_json": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved matching records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund": {
+                            "type": "string"
+                          },
+                          "law_code": {
+                            "type": "string"
+                          },
+                          "law": {
+                            "type": "string"
+                          },
+                          "law_url": {
+                            "type": "string"
+                          },
+                          "member_types": {
+                            "type": "string"
+                          },
+                          "calculation_method": {
+                            "type": "string"
+                          },
+                          "valid_from": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "valid_until": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "still_in_effect": {
+                            "type": "integer"
+                          },
+                          "bracket_count": {
+                            "type": "integer"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "table_pages": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "reviewed_on": {
+                            "type": "string",
+                            "format": "date",
+                            "nullable": true
+                          },
+                          "verification_method": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "rules_json": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "advance_payment_transition_json": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/update/laws/{id}?Instance=37012_ph_contributions": {
+      "put": {
+        "tags": [
+          "Laws"
+        ],
+        "summary": "Update a record in laws",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "law_code": {
+                    "type": "string"
+                  },
+                  "law": {
+                    "type": "string"
+                  },
+                  "law_url": {
+                    "type": "string"
+                  },
+                  "member_types": {
+                    "type": "string"
+                  },
+                  "calculation_method": {
+                    "type": "string"
+                  },
+                  "valid_from": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "valid_until": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "still_in_effect": {
+                    "type": "integer"
+                  },
+                  "bracket_count": {
+                    "type": "integer"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "table_pages": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "reviewed_on": {
+                    "type": "string",
+                    "format": "date",
+                    "nullable": true
+                  },
+                  "verification_method": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "rules_json": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "advance_payment_transition_json": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/delete/laws/{id}?Instance=37012_ph_contributions": {
+      "delete": {
+        "tags": [
+          "Laws"
+        ],
+        "summary": "Delete a record from laws",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to delete"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted the record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Record Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/create/laws?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Laws"
+        ],
+        "summary": "Bulk create records in laws (Max 500)",
+        "description": "### Bulk Create Guide\nInsert multiple records into the database with a single API call.\n\n- **Max Limit**: 500 records per request.\n- **Performance**: Highly recommended over looping single POST requests.\n\n**Response**: Returns an HTTP 207 Multi-Status with a summary and a per-record breakdown of successes and failures.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "description": "An array of objects to insert",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "law_code": {
+                          "type": "string"
+                        },
+                        "law": {
+                          "type": "string"
+                        },
+                        "law_url": {
+                          "type": "string"
+                        },
+                        "member_types": {
+                          "type": "string"
+                        },
+                        "calculation_method": {
+                          "type": "string"
+                        },
+                        "valid_from": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "valid_until": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "still_in_effect": {
+                          "type": "integer"
+                        },
+                        "bracket_count": {
+                          "type": "integer"
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "table_pages": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reviewed_on": {
+                          "type": "string",
+                          "format": "date",
+                          "nullable": true
+                        },
+                        "verification_method": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "rules_json": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "advance_payment_transition_json": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "records": [
+                  {
+                    "fund": "string",
+                    "law_code": "string",
+                    "law": "string",
+                    "law_url": "string",
+                    "member_types": "string",
+                    "calculation_method": "string",
+                    "valid_from": "2026-05-30",
+                    "valid_until": "2026-05-30",
+                    "still_in_effect": 0,
+                    "bracket_count": 0,
+                    "sha256": "string",
+                    "table_pages": "string",
+                    "reviewed_on": "2026-05-30",
+                    "verification_method": "string",
+                    "rules_json": "string",
+                    "advance_payment_transition_json": "string",
+                    "user_id": "string"
+                  },
+                  {
+                    "fund": "string",
+                    "law_code": "string",
+                    "law": "string",
+                    "law_url": "string",
+                    "member_types": "string",
+                    "calculation_method": "string",
+                    "valid_from": "2026-05-30",
+                    "valid_until": "2026-05-30",
+                    "still_in_effect": 0,
+                    "bracket_count": 0,
+                    "sha256": "string",
+                    "table_pages": "string",
+                    "reviewed_on": "2026-05-30",
+                    "verification_method": "string",
+                    "rules_json": "string",
+                    "advance_payment_transition_json": "string",
+                    "user_id": "string"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "207": {
+            "description": "Multi-Status response indicating success/failure per record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/update/laws?Instance=37012_ph_contributions": {
+      "put": {
+        "tags": [
+          "Laws"
+        ],
+        "summary": "Bulk update records in laws (Max 500)",
+        "description": "### Bulk Update Guide\nUpdate multiple existing records simultaneously using a single transaction.\n\n- **Requirement**: Every object in the `records` array MUST include the primary key (`id`).\n- **Max Limit**: 500 records per request.\n- **Atomic**: Wraps updates in a transaction (all-or-nothing per database rules).",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "description": "An array of objects to update. Must include the primary key.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "law_code": {
+                          "type": "string"
+                        },
+                        "law": {
+                          "type": "string"
+                        },
+                        "law_url": {
+                          "type": "string"
+                        },
+                        "member_types": {
+                          "type": "string"
+                        },
+                        "calculation_method": {
+                          "type": "string"
+                        },
+                        "valid_from": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "valid_until": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "still_in_effect": {
+                          "type": "integer"
+                        },
+                        "bracket_count": {
+                          "type": "integer"
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "table_pages": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reviewed_on": {
+                          "type": "string",
+                          "format": "date",
+                          "nullable": true
+                        },
+                        "verification_method": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "rules_json": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "advance_payment_transition_json": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "records": [
+                  {
+                    "id": 0,
+                    "fund": "string",
+                    "law_code": "string",
+                    "law": "string",
+                    "law_url": "string",
+                    "member_types": "string",
+                    "calculation_method": "string",
+                    "valid_from": "2026-05-30",
+                    "valid_until": "2026-05-30",
+                    "still_in_effect": 0,
+                    "bracket_count": 0,
+                    "sha256": "string",
+                    "table_pages": "string",
+                    "reviewed_on": "2026-05-30",
+                    "verification_method": "string",
+                    "rules_json": "string",
+                    "advance_payment_transition_json": "string",
+                    "user_id": "string"
+                  },
+                  {
+                    "id": 0,
+                    "fund": "string",
+                    "law_code": "string",
+                    "law": "string",
+                    "law_url": "string",
+                    "member_types": "string",
+                    "calculation_method": "string",
+                    "valid_from": "2026-05-30",
+                    "valid_until": "2026-05-30",
+                    "still_in_effect": 0,
+                    "bracket_count": 0,
+                    "sha256": "string",
+                    "table_pages": "string",
+                    "reviewed_on": "2026-05-30",
+                    "verification_method": "string",
+                    "rules_json": "string",
+                    "advance_payment_transition_json": "string",
+                    "user_id": "string"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "207": {
+            "description": "Multi-Status response indicating success/failure per record"
+          },
+          "400": {
+            "description": "Bad Request (e.g. missing primary key)"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/delete/laws?Instance=37012_ph_contributions": {
+      "delete": {
+        "tags": [
+          "Laws"
+        ],
+        "summary": "Bulk delete records from laws (Max 500)",
+        "description": "### Bulk Delete Guide\nDelete multiple records by providing the IDs of all the records you want to delete.\n\n- **Max Limit**: 500 IDs per request.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "description": "An array of primary keys to delete",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully processed bulk delete"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/create/member_types?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Member Types"
+        ],
+        "summary": "Create a new record in member_types",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "fund",
+                  "member_type",
+                  "label",
+                  "accepts_salary",
+                  "accepts_salary_credit"
+                ],
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "member_type": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "accepts_salary": {
+                    "type": "integer"
+                  },
+                  "accepts_salary_credit": {
+                    "type": "integer"
+                  },
+                  "notes": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created the record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Record created successfully"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "ID of the newly created record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/read/member_types?Instance=37012_ph_contributions": {
+      "get": {
+        "tags": [
+          "Member Types"
+        ],
+        "summary": "Retrieve all records from member_types",
+        "description": "### Filtering\n\nYou can filter results by adding column-based query parameters directly to the URL.\nOperators use bracket notation:\n\n| Operator | Example | Meaning |\n|---|---|---|\n| `field=value` | `?status=active` | Equal (default) |\n| `field[ne]=value` | `?status[ne]=inactive` | Not equal |\n| `field[gt]=value` | `?price[gt]=100` | Greater than |\n| `field[gte]=value` | `?date[gte]=2024-05-01` | Greater than or equal |\n| `field[lt]=value` | `?score[lt]=500` | Less than |\n| `field[lte]=value` | `?score[lte]=800` | Less than or equal |\n| `field[in]=value` | `?type[in]=a,b,c` | In list (comma-separated) |\n| `field[like]=value` | `?name[like]=john` | Partial match |\n\n**Available columns:** `fund`, `member_type`, `label`, `accepts_salary`, `accepts_salary_credit`, `notes`, `user_id`\n\n**Example:**\n```\n?Instance={db_name}&status=active&price[gte]=100&price[lte]=500&sort=price&order=desc&page=1&limit=20\n```",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "query",
+            "name": "queryParams",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filters, pagination & sorting as key=value pairs separated by &. Example: status=active&page=2&limit=5&sort=name&order=asc. Available columns: fund, member_type, label, accepts_salary, accepts_salary_credit, notes, user_id"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund": {
+                            "type": "string"
+                          },
+                          "member_type": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "accepts_salary": {
+                            "type": "integer"
+                          },
+                          "accepts_salary_credit": {
+                            "type": "integer"
+                          },
+                          "notes": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/read/member_types/{id}?Instance=37012_ph_contributions": {
+      "get": {
+        "tags": [
+          "Member Types"
+        ],
+        "summary": "Retrieve a record by ID from member_types",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to retrieve"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "member_type": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "accepts_salary": {
+                          "type": "integer"
+                        },
+                        "accepts_salary_credit": {
+                          "type": "integer"
+                        },
+                        "notes": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Record Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/search/member_types?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Member Types"
+        ],
+        "summary": "Search for records in member_types",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "member_type": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "accepts_salary": {
+                    "type": "integer"
+                  },
+                  "accepts_salary_credit": {
+                    "type": "integer"
+                  },
+                  "notes": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved matching records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fund": {
+                            "type": "string"
+                          },
+                          "member_type": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "accepts_salary": {
+                            "type": "integer"
+                          },
+                          "accepts_salary_credit": {
+                            "type": "integer"
+                          },
+                          "notes": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/update/member_types/{id}?Instance=37012_ph_contributions": {
+      "put": {
+        "tags": [
+          "Member Types"
+        ],
+        "summary": "Update a record in member_types",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fund": {
+                    "type": "string"
+                  },
+                  "member_type": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "accepts_salary": {
+                    "type": "integer"
+                  },
+                  "accepts_salary_credit": {
+                    "type": "integer"
+                  },
+                  "notes": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/delete/member_types/{id}?Instance=37012_ph_contributions": {
+      "delete": {
+        "tags": [
+          "Member Types"
+        ],
+        "summary": "Delete a record from member_types",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The ID of the record to delete"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted the record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Record Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/create/member_types?Instance=37012_ph_contributions": {
+      "post": {
+        "tags": [
+          "Member Types"
+        ],
+        "summary": "Bulk create records in member_types (Max 500)",
+        "description": "### Bulk Create Guide\nInsert multiple records into the database with a single API call.\n\n- **Max Limit**: 500 records per request.\n- **Performance**: Highly recommended over looping single POST requests.\n\n**Response**: Returns an HTTP 207 Multi-Status with a summary and a per-record breakdown of successes and failures.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "description": "An array of objects to insert",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "member_type": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "accepts_salary": {
+                          "type": "integer"
+                        },
+                        "accepts_salary_credit": {
+                          "type": "integer"
+                        },
+                        "notes": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "records": [
+                  {
+                    "fund": "string",
+                    "member_type": "string",
+                    "label": "string",
+                    "accepts_salary": 0,
+                    "accepts_salary_credit": 0,
+                    "notes": "string",
+                    "user_id": "string"
+                  },
+                  {
+                    "fund": "string",
+                    "member_type": "string",
+                    "label": "string",
+                    "accepts_salary": 0,
+                    "accepts_salary_credit": 0,
+                    "notes": "string",
+                    "user_id": "string"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "207": {
+            "description": "Multi-Status response indicating success/failure per record"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/update/member_types?Instance=37012_ph_contributions": {
+      "put": {
+        "tags": [
+          "Member Types"
+        ],
+        "summary": "Bulk update records in member_types (Max 500)",
+        "description": "### Bulk Update Guide\nUpdate multiple existing records simultaneously using a single transaction.\n\n- **Requirement**: Every object in the `records` array MUST include the primary key (`id`).\n- **Max Limit**: 500 records per request.\n- **Atomic**: Wraps updates in a transaction (all-or-nothing per database rules).",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "description": "An array of objects to update. Must include the primary key.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fund": {
+                          "type": "string"
+                        },
+                        "member_type": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "accepts_salary": {
+                          "type": "integer"
+                        },
+                        "accepts_salary_credit": {
+                          "type": "integer"
+                        },
+                        "notes": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "records": [
+                  {
+                    "id": 0,
+                    "fund": "string",
+                    "member_type": "string",
+                    "label": "string",
+                    "accepts_salary": 0,
+                    "accepts_salary_credit": 0,
+                    "notes": "string",
+                    "user_id": "string"
+                  },
+                  {
+                    "id": 0,
+                    "fund": "string",
+                    "member_type": "string",
+                    "label": "string",
+                    "accepts_salary": 0,
+                    "accepts_salary_credit": 0,
+                    "notes": "string",
+                    "user_id": "string"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "207": {
+            "description": "Multi-Status response indicating success/failure per record"
+          },
+          "400": {
+            "description": "Bad Request (e.g. missing primary key)"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/bulk/delete/member_types?Instance=37012_ph_contributions": {
+      "delete": {
+        "tags": [
+          "Member Types"
+        ],
+        "summary": "Bulk delete records from member_types (Max 500)",
+        "description": "### Bulk Delete Guide\nDelete multiple records by providing the IDs of all the records you want to delete.\n\n- **Max Limit**: 500 IDs per request.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Instance"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "description": "An array of primary keys to delete",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully processed bulk delete"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "parameters": {
+      "Instance": {
+        "name": "Instance",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "default": "37012_ph_contributions"
+        },
+        "description": "Instance Name"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Contribution Rates",
+      "description": "Operations and endpoints for Contribution Rates"
+    },
+    {
+      "name": "Funds",
+      "description": "Operations and endpoints for Funds"
+    },
+    {
+      "name": "Laws",
+      "description": "Operations and endpoints for Laws"
+    },
+    {
+      "name": "Member Types",
+      "description": "Operations and endpoints for Member Types"
+    }
+  ],
+  "x-branding": {
+    "instance_name": "37012_ph_contributions",
+    "owner_email": "janpabellon@gmail.com",
+    "docs_engine": "swagger",
+    "isUnlocked": true,
+    "has_custom_branding": false,
+    "custom_branding_enabled": true
+  }
+}

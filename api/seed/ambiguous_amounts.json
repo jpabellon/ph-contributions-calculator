@@ -1,0 +1,76 @@
+[
+  {
+    "law_code": "sss-household-2025",
+    "member_type": "household",
+    "field": "employer_pays",
+    "amount": "610.00",
+    "monthly_salary_credits": [
+      "4000.00",
+      "6000.00"
+    ]
+  },
+  {
+    "law_code": "sss-household-2025",
+    "member_type": "household",
+    "field": "employer_pays",
+    "amount": "760.00",
+    "monthly_salary_credits": [
+      "5000.00",
+      "7500.00"
+    ]
+  },
+  {
+    "law_code": "sss-household-2023",
+    "member_type": "household",
+    "field": "employee_pays",
+    "amount": "0.00",
+    "monthly_salary_credits": [
+      "1000.00",
+      "1500.00",
+      "2000.00",
+      "2500.00",
+      "3000.00",
+      "3500.00",
+      "4000.00",
+      "4500.00",
+      "5000.00"
+    ]
+  },
+  {
+    "law_code": "sss-household-2025",
+    "member_type": "household",
+    "field": "employee_pays",
+    "amount": "0.00",
+    "monthly_salary_credits": [
+      "1000.00",
+      "1500.00",
+      "2000.00",
+      "2500.00",
+      "3000.00",
+      "3500.00",
+      "4000.00",
+      "4500.00",
+      "5000.00"
+    ]
+  },
+  {
+    "law_code": "sss-household-2023",
+    "member_type": "household",
+    "field": "total",
+    "amount": "710.00",
+    "monthly_salary_credits": [
+      "5000.00",
+      "5000.00"
+    ]
+  },
+  {
+    "law_code": "sss-household-2025",
+    "member_type": "household",
+    "field": "total",
+    "amount": "760.00",
+    "monthly_salary_credits": [
+      "5000.00",
+      "5000.00"
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "fund": "sss",
+    "member_type": "employed",
+    "label": "Business employee",
+    "accepts_salary": true,
+    "accepts_salary_credit": false,
+    "notes": "Employer and employee share the contribution; employer also pays EC."
+  },
+  {
+    "fund": "sss",
+    "member_type": "household",
+    "label": "Household employee (kasambahay)",
+    "accepts_salary": true,
+    "accepts_salary_credit": false,
+    "notes": "Employer pays everything below PHP5,000 actual compensation; shared from PHP5,000. Look up by salary only: two PHP5,000 salary-credit rows exist."
+  },
+  {
+    "fund": "sss",
+    "member_type": "self-employed",
+    "label": "Self-employed member",
+    "accepts_salary": true,
+    "accepts_salary_credit": true,
+    "notes": "Member pays everything, including EC."
+  },
+  {
+    "fund": "sss",
+    "member_type": "land-based-ofw",
+    "label": "Land-based OFW",
+    "accepts_salary": true,
+    "accepts_salary_credit": true,
+    "notes": "Member pays everything; no EC. Minimum salary credit PHP8,000. No currency conversion."
+  },
+  {
+    "fund": "sss",
+    "member_type": "voluntary",
+    "label": "Voluntary member",
+    "accepts_salary": false,
+    "accepts_salary_credit": true,
+    "notes": "Member pays everything; no EC. Look up by an approved monthly salary credit."
+  },
+  {
+    "fund": "sss",
+    "member_type": "non-working-spouse",
+    "label": "Non-working spouse",
+    "accepts_salary": false,
+    "accepts_salary_credit": true,
+    "notes": "Member pays everything; no EC. Look up by an approved monthly salary credit; the basis is not derived here."
+  },
+  {
+    "fund": "sss",
+    "member_type": "sea-based-ofw",
+    "label": "Sea-based OFW (seafarer)",
+    "accepts_salary": true,
+    "accepts_salary_credit": false,
+    "notes": "Uses the employer/employee table; the manning agency is the employer. No currency conversion."
+  }
+]

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="An SSS contribution calculator powered by the free public SSS contributions API: look up a contribution, or reverse-look-up a salary credit from an amount paid.">
+  <title>SSS Contribution API Calculator</title>
+  <link rel="stylesheet" href="assets/kapwa-tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="api.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#calculator">Skip to calculator</a>
+  <div class="civic-banner"><div class="wrap"><span class="civic-label">Civic tech reference</span><span>An independent calculator. Not an official SSS service.</span></div></div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand-link" href="https://bettergov.ph" target="_blank" rel="noopener noreferrer" aria-label="BetterGov.ph — design reference"><img class="brand-logo" src="assets/bettergov-horizontal-primary.webp" width="1280" height="320" alt="BetterGov.ph"></a>
+      <nav class="header-nav" aria-label="Main navigation"><a href="#calculator" aria-current="page">Calculator</a><a href="#guide">How it works</a><a href="#terms">Terms</a><a href="https://github.com/jpabellon/ph-contributions-calculator/blob/main/docs/api.md" target="_blank" rel="noopener noreferrer">API docs</a></nav>
+      <span class="offline-badge api-badge"><span aria-hidden="true"></span> Live API</span>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="intro" aria-labelledby="title">
+      <p class="eyebrow">SOCIAL SECURITY · PHILIPPINES · PUBLIC API</p>
+      <h1 id="title">SSS Contribution API Calculator</h1>
+      <p class="intro-copy">Look up a monthly SSS contribution, or work backwards from an amount paid to the salary credit and salary range. Every number comes from the free public SSS contributions API.</p>
+    </section>
+    <p class="service-note"><span class="service-note-label">About this sample</span> All seven membership types. Official 2023 and 2025 schedules served by the API. Each result shows the exact API request and response.</p>
+    <div class="calculator-grid" id="calculator">
+      <section class="input-card" aria-labelledby="form-title">
+        <div class="card-heading"><span class="step-number">01</span><div><p class="eyebrow">YOUR DETAILS</p><h2 id="form-title">Choose a lookup</h2></div></div>
+        <div class="mode-switch" role="tablist" aria-label="Lookup type">
+          <button type="button" role="tab" id="tab-forward" aria-controls="forward-form" aria-selected="true">Find contribution</button>
+          <button type="button" role="tab" id="tab-reverse" aria-controls="reverse-form" aria-selected="false" tabindex="-1">Reverse lookup</button>
+        </div>
+
+        <form id="forward-form" role="tabpanel" aria-labelledby="tab-forward" novalidate>
+          <p class="mode-help">Salary or salary credit → contribution.</p>
+          <div class="field"><label for="category">Membership type</label><select id="category" name="category" aria-describedby="category-help">
+            <option value="employed">Business employee</option><option value="household">Household employee / kasambahay</option><option value="self-employed">Self-employed</option><option value="land-based-ofw">Land-based OFW</option><option value="sea-based-ofw">Sea-based OFW</option><option value="voluntary">Voluntary member</option><option value="non-working-spouse">Non-working spouse</option>
+          </select><p class="field-help" id="category-help"></p></div>
+          <div class="field"><label for="month">Contribution month</label><input id="month" name="month" type="month" min="2023-01" required aria-describedby="month-help"><p class="field-help" id="month-help">The API picks the law that applied in this month.</p></div>
+          <div class="field" id="basis-field" hidden><label for="basis">Calculate using</label><select id="basis" name="basis"><option value="compensation">Monthly income / compensation</option><option value="salary-credit">Approved monthly salary credit (MSC)</option></select></div>
+          <div class="field" id="income-field"><label for="amount" id="amount-label">Monthly compensation</label><div class="money-input"><span aria-hidden="true">₱</span><input id="amount" name="amount" type="text" inputmode="decimal" value="26000" autocomplete="off" aria-describedby="amount-help"></div><p class="field-help" id="amount-help">The actual monthly total, before deductions. Up to 2 decimal places. For per-cutoff or daily pay estimates, use the <a href="../webcalculator/index.html">offline calculator</a>.</p></div>
+          <div class="field" id="msc-field" hidden><label for="msc">Approved monthly salary credit</label><select id="msc" name="msc" aria-describedby="msc-help"></select><p class="field-help" id="msc-help">Loaded from the API for the selected month. A contribution lookup does not approve an MSC change.</p></div>
+          <p class="notice" id="category-note" hidden></p>
+          <p class="form-error" id="forward-error" role="alert" hidden></p>
+          <button class="primary-button" type="submit" id="forward-submit">Look up contribution <span aria-hidden="true">↗</span></button>
+        </form>
+
+        <form id="reverse-form" role="tabpanel" aria-labelledby="tab-reverse" novalidate hidden>
+          <p class="mode-help">Amount paid → salary credit and salary range.</p>
+          <div class="field"><label for="r-category">Membership type</label><select id="r-category" name="category">
+            <option value="employed">Business employee</option><option value="household">Household employee / kasambahay</option><option value="self-employed">Self-employed</option><option value="land-based-ofw">Land-based OFW</option><option value="sea-based-ofw">Sea-based OFW</option><option value="voluntary">Voluntary member</option><option value="non-working-spouse">Non-working spouse</option>
+          </select></div>
+          <div class="field"><label for="r-month">Contribution month</label><input id="r-month" name="month" type="month" min="2023-01" required></div>
+          <div class="field"><label for="r-field">The amount I know is</label><select id="r-field" name="field" aria-describedby="r-field-help"></select><p class="field-help" id="r-field-help"></p></div>
+          <div class="field"><label for="r-amount">Amount</label><div class="money-input"><span aria-hidden="true">₱</span><input id="r-amount" name="amount" type="text" inputmode="decimal" value="1500" autocomplete="off" aria-describedby="r-amount-help"></div><p class="field-help" id="r-amount-help">Exact monthly amount, such as the SSS line on a payslip.</p></div>
+          <p class="form-error" id="reverse-error" role="alert" hidden></p>
+          <button class="primary-button" type="submit" id="reverse-submit">Find salary credit <span aria-hidden="true">↗</span></button>
+        </form>
+        <button class="text-button" id="reset-details" type="button">Reset details</button>
+      </section>
+
+      <section class="results-column" aria-label="Lookup result" aria-live="off">
+        <div id="empty-state" class="empty-state"><span class="step-number">02</span><h2 id="empty-title">Your result, from the API.</h2><p id="empty-message">Run a lookup to see the contribution and the API request behind it.</p><button type="button" class="secondary-button" id="nearest" hidden>Use closest valid amount at or below</button></div>
+
+        <div id="result" hidden>
+          <div class="total-card">
+            <div class="total-card-top"><p class="eyebrow" id="total-eyebrow">TOTAL MONTHLY CONTRIBUTION</p><span class="result-badge" id="result-badge"></span></div>
+            <p class="total-amount" id="total-amount"></p><p class="total-context" id="total-context"></p>
+            <div class="payer-grid" id="payer-grid"></div>
+          </div>
+          <div class="breakdown-card">
+            <div id="candidates" hidden>
+              <div class="breakdown-heading"><div><p class="eyebrow">MORE THAN ONE MATCH</p><h2>Possible salary credits</h2></div></div>
+              <p class="notice" id="candidates-note"></p>
+              <div class="table-scroll"><table><caption class="sr-only">Rows matching the amount</caption><thead><tr><th scope="col">Salary range</th><th scope="col">MSC</th><th scope="col">Employee</th><th scope="col">Employer</th><th scope="col">Total</th></tr></thead><tbody id="candidates-body"></tbody></table></div>
+            </div>
+            <div id="breakdown">
+              <div class="breakdown-heading"><div><p class="eyebrow">WHERE IT GOES</p><h2>Contribution breakdown</h2></div><span class="currency-label">PHP / month</span></div>
+              <div class="table-scroll"><table id="breakdown-table"><caption class="sr-only">Monthly contribution components by payer</caption><thead id="breakdown-head"></thead><tbody id="breakdown-body"></tbody><tfoot id="breakdown-foot"></tfoot></table></div>
+              <dl class="salary-credit"><div><dt>Salary range for this row</dt><dd id="salary-range"></dd></div><div><dt>Total salary credit</dt><dd id="msc-total"></dd></div><div><dt>Regular SS salary credit</dt><dd id="msc-regular"></dd></div><div><dt>WISP / MPF salary credit</dt><dd id="msc-mpf"></dd></div></dl>
+            </div>
+            <details class="source-details"><summary>Official source</summary><p id="source-description"></p><a id="source-link" target="_blank" rel="noopener noreferrer">View official SSS circular <span aria-hidden="true">↗</span></a><p class="field-help">Amounts checked against the named PDF by an agent. Independent human review is still outstanding.</p></details>
+            <div class="result-actions"><button type="button" id="copy" class="secondary-button">Copy summary</button><button type="button" id="download" class="text-button">Download result (JSON)</button></div>
+          </div>
+        </div>
+
+        <details class="api-panel" id="api-panel" hidden>
+          <summary>API request &amp; response</summary>
+          <p class="field-help">The exact call this page made. Open it in a new tab or use it from any app; no key is needed.</p>
+          <div class="api-url"><code id="api-url"></code></div>
+          <div class="result-actions"><a id="api-open" class="secondary-button" target="_blank" rel="noopener noreferrer">Open request <span aria-hidden="true">↗</span></a><button type="button" id="api-copy" class="text-button">Copy URL</button></div>
+          <pre id="api-response" tabindex="0" aria-label="API response JSON"></pre>
+        </details>
+        <p class="sr-only" id="result-status" role="status" aria-live="polite"></p>
+        <p class="action-status" id="action-status" role="status"></p>
+      </section>
+    </div>
+    <section class="guide-grid" id="guide" aria-label="How this sample works"><article><span class="guide-index">01 / LOOKUP</span><h3>Salary in, contribution out.</h3><p>The page sends the membership type, the month and the salary (or chosen MSC). The API returns the row of the SSS table that applied that month, with each payer's share.</p></article><article><span class="guide-index">02 / REVERSE LOOKUP</span><h3>Amount in, salary credit out.</h3><p>Enter a payslip deduction, employer share, total or member payment. The API returns the salary credit and salary range that produce it. A few household amounts match more than one row, and the page shows them all.</p></article><article><span class="guide-index">03 / YOUR DATA</span><h3>Sent to the API, not stored here.</h3><p>Lookups need internet. The amounts you enter are sent to the public API at api.nocodebackend.com. This page keeps no accounts, cookies or analytics. For fully offline use, try the offline calculator.</p></article></section>
+    <section class="terms-card" id="terms" aria-labelledby="terms-heading">
+      <h2 id="terms-heading">Definition of terms</h2>
+      <p>Understand the inputs and where your contribution goes. Salary credits are calculation bases; contribution amounts are what gets paid.</p>
+      <dl class="terms-list">
+        <div><dt>SSS / SS</dt><dd>SSS means Social Security System. SS means Social Security, the regular benefit program administered by SSS.</dd></div>
+        <div><dt>Monthly salary credit (MSC)</dt><dd>The contribution base selected from the official schedule, not your take-home pay or the amount you pay to SSS. It may differ from actual income.</dd></div>
+        <div><dt>Compensation / income</dt><dd>The actual monthly earnings amount entered. The API uses it to find the matching contribution bracket; it does not decide which earnings legally count as compensation.</dd></div>
+        <div><dt>Contribution bracket</dt><dd>An income range in the official table with a corresponding salary credit and contribution amount.</dd></div>
+        <div><dt>Regular SS</dt><dd>The contribution component for regular SSS benefits, such as retirement, disability and sickness, subject to the applicable qualifying rules.</dd></div>
+        <div><dt>WISP / MPF</dt><dd>WISP means Workers’ Investment and Savings Program; MPF means Mandatory Provident Fund. These labels identify the mandatory provident-fund component in the bundled schedules, credited to the member’s individual account. It is included in the total, not an optional extra or the separate voluntary savings program.</dd></div>
+        <div><dt>EC — Employees’ Compensation</dt><dd>A separate contribution for work-related sickness, injury or death coverage. Employers pay it for business, sea-based OFW and household employees; self-employed members pay it themselves. The bundled voluntary, non-working-spouse and land-based OFW schedules have no EC contribution.</dd></div>
+        <div><dt>Salary-credit breakdown</dt><dd>Total salary credit is split between Regular SS and MPF. In the bundled 2023 and 2025 schedules, Regular SS uses up to ₱20,000 MSC; the excess is assigned to MPF. These are calculation bases, not additional payments.</dd></div>
+        <div><dt>Employee / employer / member share</dt><dd>Employee is the worker’s portion; employer is the employer’s portion. Member is the full amount paid by an individually paying member. Household employers pay the entire contribution when actual monthly compensation is below ₱5,000.</dd></div>
+        <div><dt>Total contribution</dt><dd>The combined contribution across all applicable components and payers. When Member and Total show the same amount, they describe one payment, not two separate charges.</dd></div>
+        <div><dt>Applicable month</dt><dd>The month the contribution is for. The API uses it to pick the law in effect; it is not necessarily the payment date or deadline.</dd></div>
+        <div><dt>Approved MSC</dt><dd>An eligible salary credit already established under SSS rules. Selecting an MSC here does not approve membership or a change in salary credit.</dd></div>
+        <div><dt>Reverse lookup</dt><dd>Working backwards from an amount paid to the salary credit and salary range that produce it. It estimates monthly compensation from one employer for one month; it is not proof of income. A few household amounts match more than one row.</dd></div>
+        <div><dt>OFW / kasambahay</dt><dd>OFW means Overseas Filipino Worker. Land-based and sea-based OFWs use different schedule groups. Kasambahay means a household employee.</dd></div>
+        <div><dt>PHP / pesos</dt><dd>PHP (₱) means Philippine pesos. The API returns amounts as peso text with two decimals, so "5280.00" means ₱5,280.00. Downloaded JSON keeps the API values.</dd></div>
+      </dl>
+      <details><summary>Worked example: ₱5,280 monthly contribution</summary><p>For a self-employed member at ₱35,000 MSC under the 2025 schedule: ₱20,000 Regular SS base × 15% = ₱3,000; ₱15,000 MPF base × 15% = ₱2,250; plus ₱30 EC = ₱5,280 per month. The member pays the full ₱5,280 once.</p></details>
+      <p class="terms-sources">Sources: <a href="https://www.sss.gov.ph/wp-content/uploads/2024/12/CI-2024-008-Publication.pdf" target="_blank" rel="noopener noreferrer">2025 SSS self-employed schedule</a> and <a href="https://www.sss.gov.ph/employees-compensation-program/" target="_blank" rel="noopener noreferrer">Employees’ Compensation Program</a>. Definitions describe the bundled schedules; benefit eligibility requires the applicable SSS rules.</p>
+    </section>
+    <aside class="scope-note"><strong>A reference sample, with a clear scope.</strong> Uses the public API's 2023 and 2025 official tables. A reverse lookup estimates monthly compensation from one employer; it is not proof of income. Eligibility, MSC-change limits, payment deadlines, advance-payment posting, penalties and optional voluntary Pension Booster savings require separate handling. Not affiliated with or endorsed by SSS.</aside>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner">
+    <div class="footer-brand"><a href="https://bettergov.ph" target="_blank" rel="noopener noreferrer" aria-label="Visit BetterGov.ph"><img class="brand-logo" src="assets/bettergov-horizontal-white.webp" width="1280" height="320" alt="BetterGov.ph"></a></div>
+  </div></footer>
+  <noscript><p class="noscript">Please enable JavaScript to use this calculator. It also needs an internet connection to reach the API.</p></noscript>
+</body>
+</html>

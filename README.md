@@ -119,6 +119,18 @@ For a voluntary member or non-working spouse, use basis: 'salary-credit' and mon
 
 For self-employed and land-based OFW members, the amount payable is returned in memberCentavos. Employer and employee shares are zero for these individually paying categories.
 
+## Public REST API
+
+A free, read-only API serves the same verified tables. It needs no registration or key:
+
+```sh
+curl -g "https://api.nocodebackend.com/read/contribution_rates?Instance=37012_ph_contributions&fund=sss&member_type=self-employed&valid_from[lte]=2025-06-15&valid_until[gte]=2025-06-15&salary_min[lte]=26000&salary_max[gte]=26000"
+```
+
+Pass the income date and monthly salary, and the API returns the applicable law's row, including `member_pays: "3930.00"`. Reverse lookups take a contribution amount and return the salary credit. See the [API reference](docs/api.md) and the [use cases](docs/api-use-cases.md) (payroll, household, individual members, income estimates, remittance checks). The data is generated from `data/contributions` by the SDK and reconciled by tests; see [api/README.md](api/README.md) for reloading it.
+
+[examples/webapicalculator](examples/webapicalculator/README.md) is a browser calculator built on the API. It has the same design as the offline calculator, both lookup modes, and shows the API request and response behind every result.
+
 ## Where to find things
 
 | Location | What it contains |
@@ -126,6 +138,9 @@ For self-employed and land-based OFW members, the amount payable is returned in 
 | [src/](src/) | TypeScript library source |
 | [data/contributions/](data/contributions/) | Category-aware schedules, source PDFs, hashes, and recorded table rows |
 | [examples/webcalculator/](examples/webcalculator/) | The website, including its locally bundled library and data |
+| [examples/webapicalculator/](examples/webapicalculator/) | A website that uses the public REST API, with lookup and reverse lookup |
+| [api/](api/) | Public API seed data, OpenAPI spec and reload guide |
+| [docs/api.md](docs/api.md), [docs/api-use-cases.md](docs/api-use-cases.md) | Public API reference and worked use cases |
 | [examples/monthly-payroll.mjs](examples/monthly-payroll.mjs) | Monthly earnings and final-cutoff reconciliation example |
 | [examples/member-categories.mjs](examples/member-categories.mjs) | Working examples for every supported membership category |
 | [tests/](tests/) | Automated tests |
