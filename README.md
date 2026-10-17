@@ -5,7 +5,7 @@ Calculate monthly Philippine Social Security System (SSS) contributions and see 
 There are three ways to use it:
 
 - **[Website](https://jpabellon.github.io/ph-contributions-calculator/)**: calculate in your browser, no installation.
-- **[Free REST API](docs/api.md)**: look up contributions, or reverse-look-up a salary credit from an amount paid, from any app. No registration or key.
+- **[Free REST API](docs/api.md)**: look up contributions, or reverse-look-up a salary credit from an amount paid, from any app. No registration or key. See it in action in the **[live API example](https://jpabellon.github.io/ph-contributions-calculator/webapicalculator/)**.
 - **JavaScript/TypeScript library**: the tested calculation code and official contribution-table data in this repository.
 
 ## Try the calculator
@@ -28,6 +28,8 @@ The local website runs with plain HTML, CSS, and JavaScript. It does not need No
 
 A free, read-only REST API serves the same verified tables. It needs no registration, key, or server of your own, and works from any language or directly from a browser.
 
+**[Try the live API example →](https://jpabellon.github.io/ph-contributions-calculator/webapicalculator/)** A browser calculator that gets every number from the API and shows the exact request URL and JSON response behind each result. Its source is in [examples/webapicalculator/](examples/webapicalculator/).
+
 **Lookup:** what does a self-employed member earning ₱26,000 pay for June 2025?
 
 ```sh
@@ -48,7 +50,7 @@ It returns monthly salary credit ₱30,000 and the salary range ₱29,750.00 –
 | --- | --- |
 | [API reference](docs/api.md) | Every parameter and field, lookups for all seven membership types, dates, reverse lookup, errors, and limits |
 | [API use cases](docs/api-use-cases.md) | Step-by-step payroll, household helper, self-employed/OFW/voluntary payments, income estimates, remittance checks |
-| [API calculator example](examples/webapicalculator/README.md) | A browser calculator built on the API, showing the request and response behind every result |
+| [API calculator example](https://jpabellon.github.io/ph-contributions-calculator/webapicalculator/) ([source](examples/webapicalculator/README.md)) | A live browser calculator built on the API, showing the request and response behind every result |
 | [OpenAPI spec](api/openapi.json) | Machine-readable specification (only the read operations are public) |
 | [API data and reloading](api/README.md) | How the API data is generated from this repository and kept in sync |
 
