@@ -2,7 +2,11 @@
 
 Calculate monthly Philippine Social Security System (SSS) contributions and see how much the employer, employee, or individual member pays.
 
-This repository contains a JavaScript/TypeScript library, official contribution-table data, and a working website example.
+There are three ways to use it:
+
+- **[Website](https://jpabellon.github.io/ph-contributions-calculator/)**: calculate in your browser, no installation.
+- **[Free REST API](docs/api.md)**: look up contributions, or reverse-look-up a salary credit from an amount paid, from any app. No registration or key.
+- **JavaScript/TypeScript library**: the tested calculation code and official contribution-table data in this repository.
 
 ## Try the calculator
 
@@ -19,6 +23,34 @@ To use it offline:
 3. Keep the other files in that folder alongside it.
 
 The local website runs with plain HTML, CSS, and JavaScript. It does not need Node.js, a server, or an internet connection. See the [web calculator guide](examples/webcalculator/README.md) for details.
+
+## Use the free REST API
+
+A free, read-only REST API serves the same verified tables. It needs no registration, key, or server of your own, and works from any language or directly from a browser.
+
+**Lookup:** what does a self-employed member earning ₱26,000 pay for June 2025?
+
+```sh
+curl -g "https://api.nocodebackend.com/read/contribution_rates?Instance=37012_ph_contributions&fund=sss&member_type=self-employed&valid_from[lte]=2025-06-15&valid_until[gte]=2025-06-15&salary_min[lte]=26000&salary_max[gte]=26000"
+```
+
+The response includes `member_pays: "3930.00"`, the payer shares and breakdown, and the SSS circular that applied on that date.
+
+**Reverse lookup:** a payslip shows a ₱1,500 SSS deduction. What salary does that imply?
+
+```sh
+curl -g "https://api.nocodebackend.com/read/contribution_rates?Instance=37012_ph_contributions&fund=sss&member_type=employed&valid_from[lte]=2025-06-15&valid_until[gte]=2025-06-15&employee_pays=1500"
+```
+
+It returns monthly salary credit ₱30,000 and the salary range ₱29,750.00 – ₱30,249.99.
+
+| Read next | |
+| --- | --- |
+| [API reference](docs/api.md) | Every parameter and field, lookups for all seven membership types, dates, reverse lookup, errors, and limits |
+| [API use cases](docs/api-use-cases.md) | Step-by-step payroll, household helper, self-employed/OFW/voluntary payments, income estimates, remittance checks |
+| [API calculator example](examples/webapicalculator/README.md) | A browser calculator built on the API, showing the request and response behind every result |
+| [OpenAPI spec](api/openapi.json) | Machine-readable specification (only the read operations are public) |
+| [API data and reloading](api/README.md) | How the API data is generated from this repository and kept in sync |
 
 ## What is included?
 
@@ -118,18 +150,6 @@ node quickstart.mjs
 For a voluntary member or non-working spouse, use basis: 'salary-credit' and monthlySalaryCreditCentavos instead of monthlyCompensationCentavos. Supply an approved exact MSC from the applicable schedule. The library does not derive a non-working spouse's MSC from spouse income.
 
 For self-employed and land-based OFW members, the amount payable is returned in memberCentavos. Employer and employee shares are zero for these individually paying categories.
-
-## Public REST API
-
-A free, read-only API serves the same verified tables. It needs no registration or key:
-
-```sh
-curl -g "https://api.nocodebackend.com/read/contribution_rates?Instance=37012_ph_contributions&fund=sss&member_type=self-employed&valid_from[lte]=2025-06-15&valid_until[gte]=2025-06-15&salary_min[lte]=26000&salary_max[gte]=26000"
-```
-
-Pass the income date and monthly salary, and the API returns the applicable law's row, including `member_pays: "3930.00"`. Reverse lookups take a contribution amount and return the salary credit. See the [API reference](docs/api.md) and the [use cases](docs/api-use-cases.md) (payroll, household, individual members, income estimates, remittance checks). The data is generated from `data/contributions` by the SDK and reconciled by tests; see [api/README.md](api/README.md) for reloading it.
-
-[examples/webapicalculator](examples/webapicalculator/README.md) is a browser calculator built on the API. It has the same design as the offline calculator, both lookup modes, and shows the API request and response behind every result.
 
 ## Where to find things
 
