@@ -1,6 +1,17 @@
-# Philippine SSS Contributions Calculator
+# Philippine Contributions Calculator
 
-Calculate monthly Philippine Social Security System (SSS) contributions and see how much the employer, employee, or individual member pays.
+Currently calculates monthly Philippine Social Security System (SSS) contributions and see how much the employer, employee, or individual member pays.
+
+## Roadmap
+
+The calculator currently covers SSS only. Other Philippine statutory contributions are planned:
+
+- **PhilHealth**: premium contributions and the employer/employee split.
+- **Pag-IBIG Fund (HDMF)**: monthly savings contributions for employees, employers, and individually paying members.
+
+These will be added to the library, website, and REST API with the same official-source verification as the SSS tables.
+
+## How to Use
 
 There are three ways to use it:
 
@@ -194,14 +205,6 @@ Commit the updated vendor files along with your source/data changes. To check wh
 
 GitHub Pages publishes [the live calculator](https://jpabellon.github.io/ph-contributions-calculator/) after the deployment workflow's build and tests pass. Relevant pushes to main redeploy the site automatically; the workflow can also be started manually from GitHub Actions.
 
-## Roadmap
-
-The calculator currently covers SSS only. Other Philippine statutory contributions are planned:
-
-- **PhilHealth**: premium contributions and the employer/employee split.
-- **Pag-IBIG Fund (HDMF)**: monthly savings contributions for employees, employers, and individually paying members.
-
-These will be added to the library, website, and REST API with the same official-source verification as the SSS tables.
 
 ## Before using this for real payroll
 
