@@ -10,3 +10,8 @@ data/contributions/.DS_Store
 .gstack/
 
 .vexp/
+.claude/
+.codex/
+.github/copilot-instructions.md
+.vscode/
+.clinerules
