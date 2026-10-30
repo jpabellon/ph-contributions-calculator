@@ -28,9 +28,9 @@ Usage guide: the repository README.
 
 Official CDN originals:
 - https://assets.bettergov.ph/logos/webp/horizontal-primary.webp
-- https://assets.bettergov.ph/logos/webp/horizontal-white.webp
+- https://assets.bettergov.ph/logos/svg/icon-white.svg
 
-The WebP originals are included unchanged in assets/. Display sizing preserves their 1280×320 aspect ratio, without recoloring, filters, cropping, shadows or other logo effects. The offline requirement necessitates local copies instead of remote CDN requests. This sample uses the marks as a requested design reference; no endorsement or affiliation with BetterGov.ph or SSS is asserted. The Kapwa CC0 dedication is not presented as a license for the logos.
+The originals are included unchanged in assets/. Display sizing preserves their aspect ratios (1280×320 wordmark, square icon), without recoloring, filters, cropping, shadows or other logo effects. The offline requirement necessitates local copies instead of remote CDN requests. This sample uses the marks as a requested design reference; no endorsement or affiliation with BetterGov.ph or SSS is asserted. The Kapwa CC0 dedication is not presented as a license for the logos.
 
 ## Inter
 
@@ -38,5 +38,10 @@ Source: https://github.com/rsms/inter
 Font: docs/font-files/InterVariable.woff2
 Copyright (c) 2016 The Inter Project Authors.
 License: SIL Open Font License 1.1, retained in assets/fonts/OFL.txt.
+
+## Lucide icon
+
+The footer's GitHub icon is the "github" icon from Lucide (https://lucide.dev), inlined as SVG.
+Copyright (c) Lucide Contributors. License: ISC (https://github.com/lucide-icons/lucide/blob/main/LICENSE).
 
 Download URLs and SHA-256 hashes for the included logo/font originals are recorded in assets/provenance.json.
