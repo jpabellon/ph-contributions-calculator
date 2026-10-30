@@ -9,9 +9,9 @@
       "sha256": "06b8d63e84d04071f470cfad9ea9f0763cd7d67be19084ac5f3f254527838c35"
     },
     {
-      "path": "assets/bettergov-horizontal-white.webp",
-      "sourceUrl": "https://assets.bettergov.ph/logos/webp/horizontal-white.webp",
-      "sha256": "8aa97ea8d887f99e9fd96c29523f8c3fb127540ccdc39a07670b116b2266041e"
+      "path": "assets/bettergov-icon-white.svg",
+      "sourceUrl": "https://assets.bettergov.ph/logos/svg/icon-white.svg",
+      "sha256": "c56de865817f5430cbc74f695a5caf7295f4bcb0f745d31322823e543a289d6e"
     },
     {
       "path": "assets/fonts/InterVariable.woff2",
